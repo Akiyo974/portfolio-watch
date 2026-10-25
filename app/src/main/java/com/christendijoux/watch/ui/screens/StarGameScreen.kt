@@ -1,6 +1,7 @@
 package com.christendijoux.watch.ui.screens
 
 import android.content.Context
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,11 +19,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,12 +36,14 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.Text
+import com.christendijoux.watch.R
 import com.christendijoux.watch.ui.components.Label
 import com.christendijoux.watch.ui.components.PillButton
 import com.christendijoux.watch.ui.components.PortfolioIcons
@@ -66,12 +71,16 @@ private fun randomSpot(): Offset {
     return Offset((r * cos(angle)).toFloat(), (r * sin(angle)).toFloat())
 }
 
-/** Le jeu caché du site : toucher un maximum d'étoiles en 20 secondes. */
+/**
+ * Le jeu caché du site : toucher un maximum d'étoiles en 20 secondes.
+ * [onRunningChange] prévient la navigation qu'une partie est en cours, pour couper le glissement retour.
+ */
 @Composable
-fun StarGameScreen() {
+fun StarGameScreen(onRunningChange: (Boolean) -> Unit = {}) {
     val context = LocalContext.current
     val prefs = remember { context.getSharedPreferences(PREFS, Context.MODE_PRIVATE) }
     val haptics = LocalHapticFeedback.current
+    val currentOnRunningChange by rememberUpdatedState(onRunningChange)
 
     var running by remember { mutableStateOf(false) }
     var score by remember { mutableIntStateOf(0) }
@@ -81,6 +90,7 @@ fun StarGameScreen() {
     var star by remember { mutableStateOf(randomSpot()) }
 
     LaunchedEffect(running) {
+        currentOnRunningChange(running)
         if (!running) return@LaunchedEffect
         while (left > 0) {
             delay(1_000)
@@ -93,6 +103,14 @@ fun StarGameScreen() {
             prefs.edit().putInt(KEY_BEST, score).apply()
         }
     }
+
+    // En quittant l'écran, le glissement retour doit toujours être rétabli
+    DisposableEffect(Unit) {
+        onDispose { currentOnRunningChange(false) }
+    }
+
+    // Le bouton retour abandonne la partie (sans score) au lieu de quitter l'écran
+    BackHandler(enabled = running) { running = false }
 
     if (running) {
         GameBoard(
@@ -133,7 +151,10 @@ private fun GameBoard(score: Int, left: Int, star: Offset, onHit: () -> Unit) {
             drawArc(Paper, -90f, 360f * left / GAME_SECONDS, false, Offset(inset, inset), arcSize, style = stroke)
         }
 
-        Label("$left s", modifier = Modifier.align(Alignment.TopCenter).padding(top = 16.dp))
+        Label(
+            stringResource(R.string.game_seconds_left, left),
+            modifier = Modifier.align(Alignment.TopCenter).padding(top = 16.dp),
+        )
 
         Text(
             text = score.toString(),
@@ -147,10 +168,15 @@ private fun GameBoard(score: Int, left: Int, star: Offset, onHit: () -> Unit) {
                 .offset(x = radius * star.x, y = radius * star.y)
                 .size(52.dp)
                 .clip(CircleShape)
-                .clickable(onClickLabel = "Attraper l'étoile", onClick = onHit),
+                .clickable(onClickLabel = stringResource(R.string.game_catch_star), onClick = onHit),
             contentAlignment = Alignment.Center,
         ) {
-            Icon(imageVector = PortfolioIcons.Star, contentDescription = "Étoile", tint = Paper, modifier = Modifier.size(34.dp))
+            Icon(
+                imageVector = PortfolioIcons.Star,
+                contentDescription = stringResource(R.string.game_star),
+                tint = Paper,
+                modifier = Modifier.size(34.dp),
+            )
         }
     }
 }
@@ -164,11 +190,17 @@ private fun GameIntro(last: Int?, best: Int, onStart: () -> Unit) {
             modifier = Modifier.fillMaxSize().background(Ink),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            item { Label("Étoiles") }
-            item { Text(text = "20 SECONDES", style = Type.display(34), textAlign = TextAlign.Center) }
+            item { Label(stringResource(R.string.menu_game)) }
             item {
                 Text(
-                    text = "Touchez un maximum d'étoiles avant la fin du tour.",
+                    text = stringResource(R.string.game_title, GAME_SECONDS).uppercase(),
+                    style = Type.display(34),
+                    textAlign = TextAlign.Center,
+                )
+            }
+            item {
+                Text(
+                    text = stringResource(R.string.game_hint),
                     style = Type.body,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(horizontal = 14.dp),
@@ -176,12 +208,14 @@ private fun GameIntro(last: Int?, best: Int, onStart: () -> Unit) {
             }
             item {
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(14.dp)) {
-                    Score(value = last?.toString() ?: "—", label = "Dernier")
+                    Score(value = last?.toString() ?: "—", label = stringResource(R.string.game_last))
                     Box(Modifier.width(1.dp).height(24.dp).background(Line))
-                    Score(value = best.toString(), label = "Record")
+                    Score(value = best.toString(), label = stringResource(R.string.game_best))
                 }
             }
-            item { PillButton(text = "Jouer", onClick = onStart, modifier = Modifier.fillMaxWidth(0.7f)) }
+            item {
+                PillButton(text = stringResource(R.string.game_play), onClick = onStart, modifier = Modifier.fillMaxWidth(0.7f))
+            }
         }
     }
 }

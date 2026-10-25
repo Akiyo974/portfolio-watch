@@ -9,11 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.material.Text
+import com.christendijoux.watch.R
 import com.christendijoux.watch.data.Portfolio
 import com.christendijoux.watch.ui.components.Label
 import com.christendijoux.watch.ui.components.PillButton
@@ -39,7 +41,7 @@ fun ProjectScreen(projectId: String?) {
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             if (project == null) {
-                item { Text(text = "Projet introuvable", style = Type.body, textAlign = TextAlign.Center) }
+                item { Text(text = stringResource(R.string.project_not_found), style = Type.body, textAlign = TextAlign.Center) }
                 return@ScalingLazyColumn
             }
             item {
@@ -49,11 +51,11 @@ fun ProjectScreen(projectId: String?) {
                 Text(text = project.name.uppercase(), style = Type.display(36), textAlign = TextAlign.Center)
             }
             item {
-                Label(project.status.label)
+                Label(stringResource(project.status.label))
             }
             item {
                 Text(
-                    text = project.summary,
+                    text = stringResource(project.summary),
                     style = Type.body,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(horizontal = 18.dp),
@@ -66,7 +68,7 @@ fun ProjectScreen(projectId: String?) {
             }
             item {
                 PillButton(
-                    text = "Ouvrir sur le tél.",
+                    text = stringResource(R.string.project_open_on_phone),
                     icon = PortfolioIcons.ArrowUpRight,
                     onClick = { context.openOnPhone(project.url) },
                 )

@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -19,6 +20,7 @@ import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.itemsIndexed
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.material.Text
+import com.christendijoux.watch.R
 import com.christendijoux.watch.data.Portfolio
 import com.christendijoux.watch.data.Project
 import com.christendijoux.watch.ui.components.Label
@@ -38,7 +40,7 @@ fun ProjectsScreen(onOpenProject: (String) -> Unit) {
             modifier = Modifier.fillMaxSize().background(Ink),
             verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
-            item { Label("Projets · %02d".format(Portfolio.projects.size)) }
+            item { Label(stringResource(R.string.projects_header, Portfolio.projects.size)) }
             itemsIndexed(Portfolio.projects) { index, project ->
                 ProjectCard(index = index, project = project, onClick = { onOpenProject(project.id) })
             }
@@ -59,7 +61,7 @@ private fun ProjectCard(index: Int, project: Project, onClick: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(3.dp),
     ) {
-        Label("%02d · %s · %s".format(index + 1, project.year, project.status.label))
+        Label("%02d · %s · %s".format(index + 1, project.year, stringResource(project.status.label)))
         Text(
             text = project.name.uppercase(),
             style = Type.display(26),

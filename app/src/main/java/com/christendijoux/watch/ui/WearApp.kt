@@ -1,6 +1,10 @@
 package com.christendijoux.watch.ui
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
@@ -30,7 +34,13 @@ object Routes {
 fun WearApp() {
     PortfolioTheme {
         val nav = rememberSwipeDismissableNavController()
-        SwipeDismissableNavHost(navController = nav, startDestination = Routes.HOME) {
+        // Pendant une partie, un glissement vers la droite ne doit pas fermer le jeu
+        var gameRunning by remember { mutableStateOf(false) }
+        SwipeDismissableNavHost(
+            navController = nav,
+            startDestination = Routes.HOME,
+            userSwipeEnabled = !gameRunning,
+        ) {
             composable(Routes.HOME) {
                 HomeScreen(onOpenMenu = { nav.navigate(Routes.MENU) })
             }
@@ -45,7 +55,7 @@ fun WearApp() {
             }
             composable(Routes.JOURNEY) { JourneyScreen() }
             composable(Routes.CONTACT) { ContactScreen() }
-            composable(Routes.GAME) { StarGameScreen() }
+            composable(Routes.GAME) { StarGameScreen(onRunningChange = { gameRunning = it }) }
         }
     }
 }

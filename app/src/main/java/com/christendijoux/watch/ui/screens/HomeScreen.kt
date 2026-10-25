@@ -16,15 +16,18 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.produceState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.wear.compose.foundation.CurvedLayout
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.curvedText
+import com.christendijoux.watch.R
 import com.christendijoux.watch.data.Portfolio
 import com.christendijoux.watch.ui.components.Label
 import com.christendijoux.watch.ui.theme.Ink
@@ -34,32 +37,26 @@ import com.christendijoux.watch.ui.theme.Mono
 import com.christendijoux.watch.ui.theme.Paper
 import com.christendijoux.watch.ui.theme.PaperMuted
 import com.christendijoux.watch.ui.theme.Type
-import kotlinx.coroutines.delay
-import java.time.LocalDateTime
+import com.christendijoux.watch.util.rememberCurrentTime
 import java.time.format.DateTimeFormatter
-import java.util.Locale
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
 private val timeFormat = DateTimeFormatter.ofPattern("HH:mm")
-private val dateFormat = DateTimeFormatter.ofPattern("EEE d MMM", Locale.FRENCH)
 
 /** Écran d'accueil façon cadran : un toucher ouvre le menu. */
 @Composable
 fun HomeScreen(onOpenMenu: () -> Unit) {
-    val now by produceState(LocalDateTime.now()) {
-        while (true) {
-            value = LocalDateTime.now()
-            delay(1_000)
-        }
-    }
+    val now by rememberCurrentTime()
+    val locale = LocalConfiguration.current.locales[0]
+    val dateFormat = remember(locale) { DateTimeFormatter.ofPattern("EEE d MMM", locale) }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Ink)
-            .clickable(onClickLabel = "Ouvrir le menu", onClick = onOpenMenu),
+            .clickable(onClickLabel = stringResource(R.string.home_open_menu), onClick = onOpenMenu),
         contentAlignment = Alignment.Center,
     ) {
         MinuteTicks()
@@ -76,15 +73,15 @@ fun HomeScreen(onOpenMenu: () -> Unit) {
         Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(top = 14.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(5.dp)) {
                 Box(Modifier.size(5.dp).background(Paper, CircleShape))
-                Label("Disponible")
+                Label(stringResource(R.string.status_available))
             }
             Text(text = now.format(timeFormat), style = Type.display(60))
             Label("${now.format(dateFormat)} · ${Portfolio.CITY}")
             Spacer(Modifier.height(10.dp))
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Complication(value = "%02d".format(Portfolio.projects.size), label = "Projets")
+                Complication(value = "%02d".format(Portfolio.projects.size), label = stringResource(R.string.menu_projects))
                 Box(Modifier.width(1.dp).height(22.dp).background(Line))
-                Complication(value = formatThousands(Portfolio.JOURNEY_KM), label = "Km")
+                Complication(value = formatThousands(Portfolio.JOURNEY_KM), label = stringResource(R.string.unit_km))
             }
         }
     }
