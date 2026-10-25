@@ -38,6 +38,10 @@ jobs:
       - name: Lint Android
         run: ./gradlew lintDebug
 
+      # Non signée ici : vérifie seulement que R8 (minification) passe avant de pousser un tag
+      - name: Compiler la release
+        run: ./gradlew assembleRelease
+
       - name: Publier l'APK
         uses: actions/upload-artifact@v4
         with:

@@ -2,13 +2,14 @@
 
 Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions selon [SemVer](https://semver.org/lang/fr/).
 
-## [Non publié]
+## [0.2.0] — 2026-10-25
 
 ### Ajouté
 - Carte de visite en QR code (écran Contact → « Ma carte ») : nom, poste, entreprise, téléphone, e-mail, ville, site, LinkedIn et GitHub au format vCard ; un scan avec l'appareil photo d'un téléphone propose d'ajouter le contact. Luminosité au maximum et écran allumé pendant l'affichage.
 - Version anglaise de l'app : tous les textes passent par les ressources Android (anglais par défaut, français dans `values-fr`), date affichée dans la langue de la montre.
 
 ### Modifié
+- Les APK des releases sont signés avec une clé fixe et publiés automatiquement par GitHub Actions à chaque tag `v*` : les versions suivantes s'installent par-dessus sans perdre le record. Passage depuis la v0.1.0 : une dernière désinstallation est nécessaire, la clé ayant changé.
 - Les confirmations « ouvert sur le téléphone » et les échecs utilisent l'animation standard de Wear OS (`ConfirmationActivity`) au lieu des Toast.
 - L'heure de l'accueil se met à jour à chaque minute (`ACTION_TIME_TICK`, réveil de l'écran, changement d'heure ou de fuseau) au lieu de chaque seconde, pour économiser la batterie.
 
@@ -35,4 +36,5 @@ Première version de l'app Wear OS.
 - L'heure en haut d'écran s'efface au défilement au lieu de chevaucher le contenu.
 - Le message « Ouvert sur votre téléphone » n'apparaît plus quand aucun téléphone n'est connecté.
 
+[0.2.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.2.0
 [0.1.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.1.0
