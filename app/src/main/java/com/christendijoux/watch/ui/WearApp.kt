@@ -14,6 +14,7 @@ import com.christendijoux.watch.ui.screens.JourneyScreen
 import com.christendijoux.watch.ui.screens.MenuScreen
 import com.christendijoux.watch.ui.screens.ProjectScreen
 import com.christendijoux.watch.ui.screens.ProjectsScreen
+import com.christendijoux.watch.ui.screens.QrScreen
 import com.christendijoux.watch.ui.screens.StarGameScreen
 import com.christendijoux.watch.ui.theme.PortfolioTheme
 
@@ -25,6 +26,7 @@ object Routes {
     const val JOURNEY = "journey"
     const val CONTACT = "contact"
     const val GAME = "game"
+    const val QR = "qr"
 
     fun project(id: String) = "project/$id"
 }
@@ -54,7 +56,8 @@ fun WearApp() {
                 ProjectScreen(projectId = entry.arguments?.getString("id"))
             }
             composable(Routes.JOURNEY) { JourneyScreen() }
-            composable(Routes.CONTACT) { ContactScreen() }
+            composable(Routes.CONTACT) { ContactScreen(onShowQr = { nav.navigate(Routes.QR) }) }
+            composable(Routes.QR) { QrScreen() }
             composable(Routes.GAME) { StarGameScreen(onRunningChange = { gameRunning = it }) }
         }
     }

@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.wear.compose.navigation)
     implementation(libs.wear.remote.interactions)
     implementation(libs.wear)
+    implementation(libs.zxing.core)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.wear.compose.ui.tooling)

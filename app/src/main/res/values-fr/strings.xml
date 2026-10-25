@@ -37,6 +37,11 @@
     <string name="contact_email">Email</string>
     <string name="contact_call">Appel</string>
     <string name="contact_availability">Dispo — Synaptia Web</string>
+    <string name="contact_card">Ma carte</string>
+
+    <!-- Carte de visite (QR code) -->
+    <string name="card_job_title">Spécialiste en innovation numérique · Développeur full-stack &amp; IA</string>
+    <string name="qr_description">QR code de mes coordonnées : scannez-le avec l\'appareil photo d\'un téléphone pour m\'ajouter</string>
 
     <!-- Jeu des étoiles -->
     <string name="game_title">%1$d secondes</string>

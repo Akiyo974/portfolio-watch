@@ -5,6 +5,7 @@ Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](
 ## [Non publié]
 
 ### Ajouté
+- Carte de visite en QR code (écran Contact → « Ma carte ») : nom, poste, entreprise, téléphone, e-mail, ville, site, LinkedIn et GitHub au format vCard ; un scan avec l'appareil photo d'un téléphone propose d'ajouter le contact. Luminosité au maximum et écran allumé pendant l'affichage.
 - Version anglaise de l'app : tous les textes passent par les ressources Android (anglais par défaut, français dans `values-fr`), date affichée dans la langue de la montre.
 
 ### Modifié

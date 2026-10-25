@@ -12,6 +12,9 @@ object Portfolio {
     const val LINKEDIN = "https://www.linkedin.com/in/christen-dijoux"
     const val GITHUB = "https://github.com/Akiyo974"
     const val CITY = "Saguenay"
+    const val REGION = "QC"
+    const val COUNTRY = "Canada"
+    const val COMPANY = "Gagnon Frères"
 
     /** Distance orthodromique Saint-Denis (La Réunion) → Saguenay, comme sur le site. */
     const val JOURNEY_KM = 14_420
