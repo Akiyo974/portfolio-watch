@@ -11,11 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.material.Text
+import com.christendijoux.watch.R
 import com.christendijoux.watch.data.Portfolio
 import com.christendijoux.watch.ui.components.Label
 import com.christendijoux.watch.ui.components.PortfolioIcons
@@ -39,19 +41,19 @@ fun ContactScreen() {
             modifier = Modifier.fillMaxSize().background(Ink),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            item { Label("Contact") }
-            item { Text(text = "ÉCRIVEZ-MOI", style = Type.display(34), textAlign = TextAlign.Center) }
+            item { Label(stringResource(R.string.menu_contact)) }
+            item { Text(text = stringResource(R.string.contact_title).uppercase(), style = Type.display(34), textAlign = TextAlign.Center) }
             item {
                 Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
                     RoundAction(
                         icon = PortfolioIcons.Mail,
-                        label = "Email",
+                        label = stringResource(R.string.contact_email),
                         filled = true,
                         onClick = { context.openOnPhone("mailto:${Portfolio.EMAIL}") },
                     )
                     RoundAction(
                         icon = PortfolioIcons.Phone,
-                        label = "Appel",
+                        label = stringResource(R.string.contact_call),
                         onClick = { context.call(Portfolio.PHONE) },
                     )
                 }
@@ -73,7 +75,7 @@ fun ContactScreen() {
             item {
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(5.dp)) {
                     Box(Modifier.size(5.dp).background(Paper, CircleShape))
-                    Label("Dispo — Synaptia Web")
+                    Label(stringResource(R.string.contact_availability))
                 }
             }
         }

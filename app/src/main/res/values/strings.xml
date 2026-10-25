@@ -1,4 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Anglais par défaut, comme le site ; le français est dans values-fr. -->
 <resources>
-    <string name="app_name">Christen Dijoux</string>
+    <string name="app_name" translatable="false">Christen Dijoux</string>
+
+    <!-- Accueil -->
+    <string name="home_open_menu">Open menu</string>
+    <string name="status_available">Available</string>
+    <string name="unit_km" translatable="false">Km</string>
+
+    <!-- Menu -->
+    <string name="menu_title">Menu</string>
+    <string name="menu_projects">Projects</string>
+    <string name="menu_journey">Journey</string>
+    <string name="menu_contact">Contact</string>
+    <string name="menu_game">Stars</string>
+
+    <!-- Projets -->
+    <string name="projects_header">Projects · %1$02d</string>
+    <string name="project_not_found">Project not found</string>
+    <string name="project_open_on_phone">Open on phone</string>
+    <string name="project_status_in_progress">In progress</string>
+    <string name="project_status_completed">Completed</string>
+    <string name="project_status_archived">Archived</string>
+    <string name="project_akiworkspace_summary">SaaS workspace for notes, ideas, tasks and projects, with fine-grained sharing.</string>
+    <string name="project_ctreq_summary">Two WordPress sites merged into one headless Next.js platform, with triple caching and advanced SEO.</string>
+    <string name="project_ctreq_archive_summary">Archive of institutional projects and RIRE articles, in headless React.</string>
+    <string name="project_innovations_fp_summary">Showcase of digital innovations by more than 40 vocational training teachers.</string>
+    <string name="project_webana_summary">Demo store about the history of the katana: filters, cart and dark mode.</string>
+    <string name="project_akiproject_summary">Task manager with real-time messaging.</string>
+    <string name="project_akimusic_summary">Streaming platform prototype: subscriptions and playlists.</string>
+
+    <!-- Parcours -->
+    <string name="journey_route">Réunion Island → Saguenay</string>
+    <string name="role_gagnon">Digital innovation</string>
+    <string name="role_synaptia">Co-founder</string>
+    <string name="role_ctreq">Full-stack &amp; DevOps</string>
+
+    <!-- Contact -->
+    <string name="contact_title">Get in touch</string>
+    <string name="contact_email">Email</string>
+    <string name="contact_call">Call</string>
+    <string name="contact_availability">Available — Synaptia Web</string>
+
+    <!-- Jeu des étoiles -->
+    <string name="game_title">%1$d seconds</string>
+    <string name="game_hint">Tap as many stars as you can before time runs out.</string>
+    <string name="game_last">Last</string>
+    <string name="game_best">Best</string>
+    <string name="game_play">Play</string>
+    <string name="game_seconds_left" translatable="false">%1$d s</string>
+    <string name="game_star">Star</string>
+    <string name="game_catch_star">Catch the star</string>
+
+    <!-- Ouverture sur le téléphone -->
+    <string name="phone_opened">Opened on your phone</string>
+    <string name="phone_failed">Couldn\'t open on your phone</string>
 </resources>

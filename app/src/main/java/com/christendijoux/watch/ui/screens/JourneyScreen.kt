@@ -16,11 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.items
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.material.Text
+import com.christendijoux.watch.R
 import com.christendijoux.watch.data.Experience
 import com.christendijoux.watch.data.Portfolio
 import com.christendijoux.watch.ui.components.Label
@@ -48,14 +50,14 @@ fun JourneyScreen() {
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
-                item { Label("Parcours") }
+                item { Label(stringResource(R.string.menu_journey)) }
                 item {
                     Row(verticalAlignment = Alignment.Bottom, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text(text = formatThousands(Portfolio.JOURNEY_KM), style = Type.display(52))
-                        Label("Km", modifier = Modifier.padding(bottom = 8.dp))
+                        Label(stringResource(R.string.unit_km), modifier = Modifier.padding(bottom = 8.dp))
                     }
                 }
-                item { Label("La Réunion → Saguenay") }
+                item { Label(stringResource(R.string.journey_route)) }
                 items(Portfolio.experiences) { ExperienceRow(it) }
             }
             JourneyArc()
@@ -78,7 +80,7 @@ private fun ExperienceRow(experience: Experience) {
             Text(text = experience.company.uppercase(), style = Type.display(20))
             Label(experience.year)
         }
-        Label(experience.role, modifier = Modifier.fillMaxWidth())
+        Label(stringResource(experience.role), modifier = Modifier.fillMaxWidth())
     }
 }
 

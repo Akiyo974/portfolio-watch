@@ -2,6 +2,19 @@
 
 Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions selon [SemVer](https://semver.org/lang/fr/).
 
+## [Non publié]
+
+### Ajouté
+- Version anglaise de l'app : tous les textes passent par les ressources Android (anglais par défaut, français dans `values-fr`), date affichée dans la langue de la montre.
+
+### Modifié
+- Les confirmations « ouvert sur le téléphone » et les échecs utilisent l'animation standard de Wear OS (`ConfirmationActivity`) au lieu des Toast.
+- L'heure de l'accueil se met à jour à chaque minute (`ACTION_TIME_TICK`, réveil de l'écran, changement d'heure ou de fuseau) au lieu de chaque seconde, pour économiser la batterie.
+
+### Corrigé
+- Un glissement vers la droite pendant une partie ne ferme plus le jeu ; le bouton retour abandonne la partie au lieu de quitter l'écran.
+- Le message d'échec n'affirme plus qu'aucun téléphone n'est connecté quand l'ouverture échoue pour une autre raison.
+
 ## [0.1.0] — 2026-10-25
 
 Première version de l'app Wear OS.

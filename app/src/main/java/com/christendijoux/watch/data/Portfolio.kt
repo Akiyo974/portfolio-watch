@@ -1,5 +1,8 @@
 package com.christendijoux.watch.data
 
+import androidx.annotation.StringRes
+import com.christendijoux.watch.R
+
 /** Contenu du portfolio, repris de christendijoux.com (src/data/customProjects.ts). */
 object Portfolio {
     const val NAME = "Christen Dijoux"
@@ -19,7 +22,7 @@ object Portfolio {
             name = "AkiWorkspace",
             year = "2026",
             status = Status.InProgress,
-            summary = "Workspace SaaS pour notes, idées, tâches et projets, avec partage granulaire.",
+            summary = R.string.project_akiworkspace_summary,
             tags = listOf("Next.js", "Prisma", "TypeScript"),
         ),
         Project(
@@ -27,7 +30,7 @@ object Portfolio {
             name = "CTREQ",
             year = "2025",
             status = Status.InProgress,
-            summary = "Fusion de deux sites WordPress en une plateforme headless Next.js, cache triple et SEO avancé.",
+            summary = R.string.project_ctreq_summary,
             tags = listOf("Next.js", "GraphQL", "WordPress"),
         ),
         Project(
@@ -35,7 +38,7 @@ object Portfolio {
             name = "CTREQ Archive",
             year = "2025",
             status = Status.Completed,
-            summary = "Archive des projets institutionnels et des articles RIRE, en React headless.",
+            summary = R.string.project_ctreq_archive_summary,
             tags = listOf("React", "GraphQL"),
         ),
         Project(
@@ -43,7 +46,7 @@ object Portfolio {
             name = "Innovations FP",
             year = "2024",
             status = Status.Completed,
-            summary = "Vitrine des innovations numériques de plus de 40 enseignants en formation professionnelle.",
+            summary = R.string.project_innovations_fp_summary,
             tags = listOf("React", "TypeScript"),
         ),
         Project(
@@ -51,7 +54,7 @@ object Portfolio {
             name = "Webana",
             year = "2024",
             status = Status.Completed,
-            summary = "Boutique de démonstration sur l'histoire du katana : filtres, panier et mode sombre.",
+            summary = R.string.project_webana_summary,
             tags = listOf("React", "Tailwind"),
         ),
         Project(
@@ -59,7 +62,7 @@ object Portfolio {
             name = "AkiProject",
             year = "2023",
             status = Status.Completed,
-            summary = "Gestionnaire de tâches et messagerie en temps réel.",
+            summary = R.string.project_akiproject_summary,
             tags = listOf("PHP", "MySQL"),
         ),
         Project(
@@ -67,24 +70,24 @@ object Portfolio {
             name = "AkiMusic",
             year = "2023",
             status = Status.Archived,
-            summary = "Prototype de plateforme de streaming : abonnements et playlists.",
+            summary = R.string.project_akimusic_summary,
             tags = listOf("PHP", "Bootstrap"),
         ),
     )
 
     val experiences = listOf(
-        Experience(company = "Gagnon Frères", role = "Innovation numérique", year = "2026"),
-        Experience(company = "Synaptia Web", role = "Co-fondateur", year = "2025"),
-        Experience(company = "CTREQ", role = "Full-stack & DevOps", year = "2025"),
+        Experience(company = "Gagnon Frères", role = R.string.role_gagnon, year = "2026"),
+        Experience(company = "Synaptia Web", role = R.string.role_synaptia, year = "2025"),
+        Experience(company = "CTREQ", role = R.string.role_ctreq, year = "2025"),
     )
 
     fun project(id: String?): Project? = projects.firstOrNull { it.id == id }
 }
 
-enum class Status(val label: String) {
-    InProgress("En cours"),
-    Completed("Terminé"),
-    Archived("Archivé"),
+enum class Status(@StringRes val label: Int) {
+    InProgress(R.string.project_status_in_progress),
+    Completed(R.string.project_status_completed),
+    Archived(R.string.project_status_archived),
 }
 
 data class Project(
@@ -92,11 +95,11 @@ data class Project(
     val name: String,
     val year: String,
     val status: Status,
-    val summary: String,
+    @StringRes val summary: Int,
     val tags: List<String>,
 ) {
     /** Étude de cas complète sur le portfolio web. */
     val url: String get() = "${Portfolio.SITE}/project/$id"
 }
 
-data class Experience(val company: String, val role: String, val year: String)
+data class Experience(val company: String, @StringRes val role: Int, val year: String)

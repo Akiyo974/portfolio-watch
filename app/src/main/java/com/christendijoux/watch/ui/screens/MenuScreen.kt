@@ -1,5 +1,6 @@
 package com.christendijoux.watch.ui.screens
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
@@ -23,6 +25,7 @@ import androidx.wear.compose.foundation.lazy.items
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.Text
+import com.christendijoux.watch.R
 import com.christendijoux.watch.data.Portfolio
 import com.christendijoux.watch.ui.Routes
 import com.christendijoux.watch.ui.components.Label
@@ -35,17 +38,17 @@ import com.christendijoux.watch.ui.theme.Type
 
 private data class MenuEntry(
     val number: String,
-    val title: String,
+    @StringRes val title: Int,
     val route: String,
     val count: String? = null,
     val icon: ImageVector? = null,
 )
 
 private val entries = listOf(
-    MenuEntry("01", "Projets", Routes.PROJECTS, count = "%02d".format(Portfolio.projects.size)),
-    MenuEntry("02", "Parcours", Routes.JOURNEY),
-    MenuEntry("03", "Contact", Routes.CONTACT),
-    MenuEntry("04", "Étoiles", Routes.GAME, icon = PortfolioIcons.Star),
+    MenuEntry("01", R.string.menu_projects, Routes.PROJECTS, count = "%02d".format(Portfolio.projects.size)),
+    MenuEntry("02", R.string.menu_journey, Routes.JOURNEY),
+    MenuEntry("03", R.string.menu_contact, Routes.CONTACT),
+    MenuEntry("04", R.string.menu_game, Routes.GAME, icon = PortfolioIcons.Star),
 )
 
 /** Menu numéroté, comme celui du site. */
@@ -57,7 +60,7 @@ fun MenuScreen(onNavigate: (String) -> Unit) {
             state = listState,
             modifier = Modifier.fillMaxSize().background(Ink),
         ) {
-            item { Label("Menu") }
+            item { Label(stringResource(R.string.menu_title)) }
             items(entries) { entry ->
                 MenuRow(entry = entry, onClick = { onNavigate(entry.route) })
             }
@@ -67,18 +70,19 @@ fun MenuScreen(onNavigate: (String) -> Unit) {
 
 @Composable
 private fun MenuRow(entry: MenuEntry, onClick: () -> Unit) {
+    val title = stringResource(entry.title)
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .heightIn(min = 48.dp)
-                .clickable(role = Role.Button, onClickLabel = entry.title, onClick = onClick)
+                .clickable(role = Role.Button, onClickLabel = title, onClick = onClick)
                 .padding(vertical = 6.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Label(entry.number)
-            Text(text = entry.title.uppercase(), style = Type.display(32))
+            Text(text = title.uppercase(), style = Type.display(32))
             entry.count?.let { Label(it) }
             entry.icon?.let { Icon(imageVector = it, contentDescription = null, tint = Paper, modifier = Modifier.size(14.dp)) }
         }
