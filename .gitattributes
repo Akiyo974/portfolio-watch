@@ -1,0 +1,11 @@
+# Fins de ligne normalisées
+* text=auto eol=lf
+*.bat text eol=crlf
+gradlew text eol=lf
+
+# Fichiers binaires
+*.png binary
+*.jpg binary
+*.ttf binary
+*.jar binary
+*.apk binary
