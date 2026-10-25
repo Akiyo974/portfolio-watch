@@ -41,6 +41,24 @@ object PortfolioIcons {
 
     val ArrowUpRight by lazy { stroke("arrow-up-right", "M7 17L17 7", "M8 7h9v9") }
 
+    val QrCode by lazy {
+        stroke(
+            "qr-code",
+            "M4 3h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z",
+            "M17 3h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z",
+            "M4 16h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1z",
+            "M21 16h-3a2 2 0 0 0-2 2v3",
+            "M21 21v.01",
+            "M12 7v3a2 2 0 0 1-2 2H7",
+            "M3 12h.01",
+            "M12 3h.01",
+            "M12 16v.01",
+            "M16 12h1",
+            "M21 12v.01",
+            "M12 21v-1",
+        )
+    }
+
     /** Étoile pleine (jeu et menu). */
     val Star by lazy {
         ImageVector.Builder("star", 24.dp, 24.dp, 24f, 24f)

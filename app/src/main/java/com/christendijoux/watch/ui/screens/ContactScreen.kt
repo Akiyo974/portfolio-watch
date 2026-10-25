@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
@@ -20,6 +21,7 @@ import androidx.wear.compose.material.Text
 import com.christendijoux.watch.R
 import com.christendijoux.watch.data.Portfolio
 import com.christendijoux.watch.ui.components.Label
+import com.christendijoux.watch.ui.components.PillButton
 import com.christendijoux.watch.ui.components.PortfolioIcons
 import com.christendijoux.watch.ui.components.RoundAction
 import com.christendijoux.watch.ui.components.ScreenScaffold
@@ -29,9 +31,9 @@ import com.christendijoux.watch.ui.theme.Type
 import com.christendijoux.watch.util.call
 import com.christendijoux.watch.util.openOnPhone
 
-/** Contact : chaque action s'ouvre sur la montre ou sur le téléphone associé. */
+/** Contact : chaque action s'ouvre sur la montre ou sur le téléphone associé ; la carte de visite s'affiche en QR code. */
 @Composable
-fun ContactScreen() {
+fun ContactScreen(onShowQr: () -> Unit) {
     val context = LocalContext.current
     val listState = rememberScalingLazyListState()
 
@@ -71,6 +73,14 @@ fun ContactScreen() {
                         onClick = { context.openOnPhone(Portfolio.GITHUB) },
                     )
                 }
+            }
+            item {
+                PillButton(
+                    text = stringResource(R.string.contact_card),
+                    icon = PortfolioIcons.QrCode,
+                    onClick = onShowQr,
+                    modifier = Modifier.fillMaxWidth(0.7f),
+                )
             }
             item {
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(5.dp)) {

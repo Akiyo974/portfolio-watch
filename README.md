@@ -66,12 +66,14 @@ Elle reprend l'identité du site — monochrome, éditoriale, typographie conden
 ```bash
 adb pair <IP>:<PORT_D_APPAIRAGE>
 adb connect <IP>:<PORT>
-adb install portfolio-watch-v0.1.0.apk
+adb install -r portfolio-watch-v0.2.0.apk
 ```
+
+`-r` met à jour l'app déjà installée en gardant ses données. Depuis la v0.2.0, les releases sont signées avec la même clé : les mises à jour s'installent par-dessus. Pour passer de la v0.1.0 (ou d'un APK de debug) à une release, désinstallez une fois l'ancienne version (`adb uninstall com.christendijoux.watch`).
 
 ### Depuis la CI
 
-Chaque push sur `main` compile l'app : l'APK est téléchargeable dans les artefacts du [dernier build](https://github.com/Akiyo974/portfolio-watch/actions/workflows/android.yml).
+Chaque push sur `main` compile l'app : l'APK de debug est téléchargeable dans les artefacts du [dernier build](https://github.com/Akiyo974/portfolio-watch/actions/workflows/android.yml). Il est signé avec une clé de debug qui change d'un build à l'autre : il faut désinstaller l'app avant de l'installer.
 
 ## Développement
 
@@ -97,6 +99,27 @@ Sans Android Studio, indiquez l'emplacement du SDK dans un fichier `local.proper
 sdk.dir=C:/Users/<vous>/Android/Sdk
 ```
 
+### Publier une release
+
+1. Mettre à jour `versionCode` et `versionName` dans `app/build.gradle.kts`, et la section correspondante du [CHANGELOG](CHANGELOG.md).
+2. Une fois sur `main`, pousser le tag de la version :
+
+```bash
+git tag v0.2.0
+git push origin v0.2.0
+```
+
+Le workflow [Release](.github/workflows/release.yml) vérifie que le tag correspond à `versionName`, compile l'APK signé, puis publie la release avec ses notes tirées du CHANGELOG.
+
+La signature utilise une clé PKCS12 fixe (alias `portfolio-watch`), jamais versionnée, fournie par deux secrets du dépôt (*Settings → Secrets and variables → Actions*) :
+
+| Secret | Contenu |
+|---|---|
+| `SIGNING_KEYSTORE_BASE64` | Le fichier `.p12` encodé en base64 |
+| `SIGNING_PASSWORD` | Son mot de passe |
+
+Pour signer en local, définir `SIGNING_STORE_FILE`, `SIGNING_STORE_PASSWORD`, `SIGNING_KEY_ALIAS` et `SIGNING_KEY_PASSWORD` avant `./gradlew assembleRelease`. Sans ces variables, l'APK de release est produit non signé.
+
 ### Stack technique
 
 | Couche | Choix |
@@ -106,6 +129,7 @@ sdk.dir=C:/Users/<vous>/Android/Sdk
 | Navigation | `SwipeDismissableNavHost` : glisser vers la droite ou bouton retour |
 | Listes | `ScalingLazyColumn`, défilement à la lunette, `PositionIndicator` courbe |
 | Ouverture sur téléphone | `RemoteActivityHelper` (`androidx.wear:wear-remote-interactions`) |
+| Carte de visite | QR code vCard généré sur la montre ([ZXing](https://github.com/zxing/zxing)) |
 | Polices | Big Shoulders Display, Geist, Geist Mono — fichiers variables embarqués |
 | Build | Gradle 8.11 · AGP 8.7 · JDK 17 · GitHub Actions |
 | Cible | Wear OS 3+ (API 30 à 35), Galaxy Watch 4 et modèles plus récents |
@@ -118,14 +142,17 @@ portfolio-watch/
 │   ├── java/com/christendijoux/watch/
 │   │   ├── MainActivity.kt
 │   │   ├── data/Portfolio.kt         # Projets, parcours, liens (repris du site)
+│   │   ├── data/ContactCard.kt       # Carte de visite vCard et QR code
 │   │   ├── util/Phone.kt             # Ouverture sur le téléphone, appel
+│   │   ├── util/Clock.kt             # Heure mise à jour à chaque minute
 │   │   └── ui/
 │   │       ├── WearApp.kt            # Navigation entre les écrans
 │   │       ├── theme/Theme.kt        # Couleurs, polices, styles de texte
 │   │       ├── components/           # Étiquettes, boutons, icônes
-│   │       └── screens/              # Accueil, Menu, Projets, Projet, Parcours, Contact, Jeu
-│   └── res/                          # Polices, icône, thème
+│   │       └── screens/              # Accueil, Menu, Projets, Projet, Parcours, Contact, QR, Jeu
+│   └── res/                          # Polices, icône, thème, textes EN (values) et FR (values-fr)
 ├── .github/workflows/android.yml     # Build, lint et APK à chaque push
+├── .github/workflows/release.yml     # APK signé et release à chaque tag v*
 ├── docs/
 │   ├── screens/                      # Captures de l'app
 │   └── design/                       # Maquettes de conception
@@ -147,10 +174,12 @@ portfolio-watch/
 - [x] Ouverture des liens sur le téléphone
 - [x] Tests dans l'émulateur Wear OS 5 et captures réelles
 - [x] Intégration continue (build, lint, APK)
+- [x] Carte de visite en QR code
+- [x] Version anglaise
+- [x] Releases signées publiées automatiquement
 - [ ] Test sur une vraie Galaxy Watch (lunette tournante, téléphone associé)
 - [ ] Cadran installable (Watch Face Format)
 - [ ] Tuile Wear OS « Disponibilité »
-- [ ] Version anglaise
 - [ ] Publication sur le Google Play Store
 
 Les évolutions sont détaillées dans le [CHANGELOG](CHANGELOG.md).

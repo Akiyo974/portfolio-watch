@@ -13,12 +13,27 @@ android {
         // Wear OS 3+ : Galaxy Watch 4 et modèles plus récents
         minSdk = 30
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
+    }
+
+    // Clé de signature fixe, fournie par la CI (secrets GitHub) ou en local par variables d'environnement.
+    // Sans ces variables, l'APK de release est produit non signé.
+    val signingStore = System.getenv("SIGNING_STORE_FILE")?.let { file(it) }
+    signingConfigs {
+        if (signingStore != null) {
+            create("release") {
+                storeFile = signingStore
+                storePassword = System.getenv("SIGNING_STORE_PASSWORD")
+                keyAlias = System.getenv("SIGNING_KEY_ALIAS")
+                keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
         release {
+            if (signingStore != null) signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -52,6 +67,7 @@ dependencies {
     implementation(libs.wear.compose.navigation)
     implementation(libs.wear.remote.interactions)
     implementation(libs.wear)
+    implementation(libs.zxing.core)
 
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.wear.compose.ui.tooling)

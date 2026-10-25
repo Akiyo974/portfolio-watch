@@ -7,6 +7,7 @@ coreKtx = "1.15.0"
 wearCompose = "1.4.1"
 wearRemoteInteractions = "1.1.0"
 wear = "1.3.0"
+zxing = "3.5.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -21,6 +22,7 @@ wear-compose-navigation = { group = "androidx.wear.compose", name = "compose-nav
 wear-compose-ui-tooling = { group = "androidx.wear.compose", name = "compose-ui-tooling", version.ref = "wearCompose" }
 wear-remote-interactions = { group = "androidx.wear", name = "wear-remote-interactions", version.ref = "wearRemoteInteractions" }
 wear = { group = "androidx.wear", name = "wear", version.ref = "wear" }
+zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxing" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
