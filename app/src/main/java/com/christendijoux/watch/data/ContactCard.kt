@@ -14,7 +14,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 fun contactCard(jobTitle: String): String = listOf(
     "BEGIN:VCARD",
     "VERSION:3.0",
-    "N:Dijoux;Christen;;;",
+    "N:Dijoux;Christen",
     "FN:${Portfolio.NAME}",
     "TITLE:${escape(jobTitle)}",
     "ORG:${escape(Portfolio.COMPANY)}",
@@ -22,7 +22,8 @@ fun contactCard(jobTitle: String): String = listOf(
     "EMAIL:${Portfolio.EMAIL}",
     "ADR:;;;${Portfolio.CITY};${Portfolio.REGION};;${Portfolio.COUNTRY}",
     "URL:${Portfolio.SITE}",
-    "URL:${Portfolio.LINKEDIN}",
+    // Sans « www. » : LinkedIn redirige, et ces octets gardent le QR à 65 modules
+    "URL:${Portfolio.LINKEDIN.replace("://www.", "://")}",
     "URL:${Portfolio.GITHUB}",
     "END:VCARD",
 ).joinToString("\r\n")

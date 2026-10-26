@@ -10,7 +10,7 @@ Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](
 - Tests unitaires de la carte de visite (contenu, échappement, taille maximale du QR, relecture du QR dans les deux langues), lancés par la CI.
 
 ### Modifié
-- Carte de visite allégée (sans paramètres TYPE= superflus) : 367 octets au lieu de 401, QR de 65 modules au lieu de 69, donc plus facile à scanner.
+- Carte de visite allégée (sans paramètres TYPE= superflus), sans « www. » pour LinkedIn : 360 octets au lieu de 401, QR de 65 modules au lieu de 69, donc plus facile à scanner.
 - Actions GitHub à jour (checkout v7, setup-java v6, setup-gradle v6, upload-artifact v7, action-gh-release v3).
 
 ## [0.3.2] — 2026-10-25

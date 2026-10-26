@@ -33,7 +33,7 @@ class ContactCardTest {
             "TEL:${Portfolio.PHONE}",
             "EMAIL:${Portfolio.EMAIL}",
             "URL:${Portfolio.SITE}",
-            "URL:${Portfolio.LINKEDIN}",
+            "URL:https://linkedin.com/in/christen-dijoux",
             "URL:${Portfolio.GITHUB}",
         ).forEach { assertTrue("Ligne manquante : $it", it in lines) }
     }
