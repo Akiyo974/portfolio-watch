@@ -32,7 +32,13 @@ jobs:
       - name: Rendre gradlew exécutable
         run: chmod +x gradlew
 
-      - name: Compiler l'APK de debug
+      # Validateur officiel de Google : le cadran doit respecter le Watch Face Format v1
+      - name: Valider le cadran (Watch Face Format)
+        run: |
+          curl -sSfL -o "$RUNNER_TEMP/wff-validator.jar" https://github.com/google/watchface/releases/download/release/wff-validator.jar
+          java -jar "$RUNNER_TEMP/wff-validator.jar" 1 watchface/src/main/res/raw/watchface.xml
+
+      - name: Compiler les APK de debug (app et cadran)
         run: ./gradlew assembleDebug --stacktrace
 
       - name: Tests unitaires
@@ -50,6 +56,13 @@ jobs:
         with:
           name: portfolio-watch-debug
           path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 14
+
+      - name: Publier l'APK du cadran
+        uses: actions/upload-artifact@v7
+        with:
+          name: portfolio-watch-face-debug
+          path: watchface/build/outputs/apk/debug/watchface-debug.apk
           retention-days: 14
 
       - name: Publier le rapport de lint
