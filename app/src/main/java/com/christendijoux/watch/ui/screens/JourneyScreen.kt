@@ -14,7 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -31,36 +32,28 @@ import com.christendijoux.watch.ui.theme.Ink
 import com.christendijoux.watch.ui.theme.Line
 import com.christendijoux.watch.ui.theme.Paper
 import com.christendijoux.watch.ui.theme.Type
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.sin
 
-// Arc sur la moitié basse (l'heure occupe le haut) : départ à gauche, arrivée à droite
-private const val ARC_START = 160f
-private const val ARC_SWEEP = -140f
-
-/** Parcours : La Réunion → Saguenay, tracé le long de la lunette. */
+/** Parcours : La Réunion → Saguenay, tracé comme un vol au-dessus de la liste des expériences. */
 @Composable
 fun JourneyScreen() {
     val listState = rememberScalingLazyListState()
     ScreenScaffold(listState = listState) {
-        Box(Modifier.fillMaxSize().background(Ink)) {
-            ScalingLazyColumn(
-                state = listState,
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(6.dp),
-            ) {
-                item { Label(stringResource(R.string.menu_journey)) }
-                item {
-                    Row(verticalAlignment = Alignment.Bottom, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text(text = formatThousands(Portfolio.JOURNEY_KM), style = Type.display(52))
-                        Label(stringResource(R.string.unit_km), modifier = Modifier.padding(bottom = 8.dp))
-                    }
+        ScalingLazyColumn(
+            state = listState,
+            modifier = Modifier.fillMaxSize().background(Ink),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            item { Label(stringResource(R.string.menu_journey)) }
+            item {
+                Row(verticalAlignment = Alignment.Bottom, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(text = formatThousands(Portfolio.JOURNEY_KM), style = Type.display(52))
+                    Label(stringResource(R.string.unit_km), modifier = Modifier.padding(bottom = 8.dp))
                 }
-                item { Label(stringResource(R.string.journey_route)) }
-                items(Portfolio.experiences) { ExperienceRow(it) }
             }
-            JourneyArc()
+            // Le trajet défile avec la liste : il ne passe plus jamais sur le texte
+            item { FlightPath() }
+            item { Label(stringResource(R.string.journey_route)) }
+            items(Portfolio.experiences) { ExperienceRow(it) }
         }
     }
 }
@@ -84,32 +77,27 @@ private fun ExperienceRow(experience: Experience) {
     }
 }
 
-/** Arc du trajet, du point de départ (cercle vide) à l'arrivée (point plein). */
+/** Arc pointillé du départ (cercle vide) à l'arrivée (point plein), bombé comme une trajectoire de vol. */
 @Composable
-private fun JourneyArc() {
-    Canvas(Modifier.fillMaxSize()) {
-        val inset = 5.dp.toPx()
-        val radius = size.minDimension / 2 - inset
-        val center = Offset(size.width / 2, size.height / 2)
+private fun FlightPath() {
+    Canvas(Modifier.fillMaxWidth(0.6f).height(28.dp)) {
         val stroke = 1.5.dp.toPx()
+        val dot = 3.5.dp.toPx()
+        val start = Offset(dot + stroke, size.height - dot - stroke)
+        val end = Offset(size.width - dot - stroke, start.y)
 
-        drawArc(
+        val path = Path().apply {
+            moveTo(start.x, start.y)
+            quadraticTo(size.width / 2, -size.height * 0.55f, end.x, end.y)
+        }
+        drawPath(
+            path = path,
             color = Paper,
-            startAngle = ARC_START,
-            sweepAngle = ARC_SWEEP,
-            useCenter = false,
-            topLeft = Offset(center.x - radius, center.y - radius),
-            size = Size(radius * 2, radius * 2),
-            style = Stroke(width = stroke),
+            style = Stroke(width = stroke, pathEffect = PathEffect.dashPathEffect(floatArrayOf(4.dp.toPx(), 3.dp.toPx()))),
         )
 
-        fun pointAt(degrees: Float): Offset {
-            val rad = degrees * PI / 180
-            return Offset(center.x + radius * cos(rad).toFloat(), center.y + radius * sin(rad).toFloat())
-        }
-        val dot = 3.5.dp.toPx()
-        drawCircle(color = Ink, radius = dot, center = pointAt(ARC_START))
-        drawCircle(color = Paper, radius = dot, center = pointAt(ARC_START), style = Stroke(width = stroke))
-        drawCircle(color = Paper, radius = dot, center = pointAt(ARC_START + ARC_SWEEP))
+        drawCircle(color = Ink, radius = dot, center = start)
+        drawCircle(color = Paper, radius = dot, center = start, style = Stroke(width = stroke))
+        drawCircle(color = Paper, radius = dot, center = end)
     }
 }

@@ -51,7 +51,7 @@ It carries over the website's identity — monochrome, editorial, condensed type
 
 - **Watch-face home** — live time and date, minute ticks, name written along the edge, availability and two complications. One tap opens the menu.
 - **Projects** — the seven portfolio projects with year and status; each case study **opens in full on the paired phone**.
-- **Journey** — 14,420 km from Réunion Island to Saguenay, drawn along the bezel, followed by recent roles.
+- **Journey** — 14,420 km from Réunion Island to Saguenay, drawn as a flight path, followed by recent roles.
 - **Contact** — email, call, LinkedIn and GitHub in one tap. Calls go out from the watch when it can, otherwise from the phone.
 - **Business card QR code** — name, title, company, phone, email, city, website, LinkedIn and GitHub as a vCard; scanning it with a phone camera offers to add the contact. Full brightness and screen kept on while it is shown.
 - **Contact card tile** — swipe from the watch face to see availability and jump straight to the QR code, a call or an email.
@@ -71,7 +71,7 @@ It carries over the website's identity — monochrome, editorial, condensed type
 ```bash
 adb pair <IP>:<PAIRING_PORT>
 adb connect <IP>:<PORT>
-adb install -r portfolio-watch-v0.3.0.apk
+adb install -r portfolio-watch-v0.3.1.apk
 ```
 
 `-r` updates the installed app and keeps its data. Since v0.2.0, releases are signed with the same key, so updates install on top of each other. To move from v0.1.0 (or a debug APK) to a release, uninstall the old version once (`adb uninstall com.christendijoux.watch`).
