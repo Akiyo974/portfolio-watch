@@ -12,8 +12,8 @@ android {
         // Watch Face Format v1 : Wear OS 4+ (API 33)
         minSdk = 33
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.5.0"
+        versionCode = 2
+        versionName = "0.6.0"
     }
 
     // Même clé fixe que l'app (voir app/build.gradle.kts)

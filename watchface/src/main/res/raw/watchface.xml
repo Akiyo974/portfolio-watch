@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Cadran « Christen Dijoux » (Watch Face Format v1), repris de l'accueil de l'app :
-  graduations des minutes, nom le long du bord, heure, date et deux complications.
-  Les graduations sont calculées pour un cercle de rayon 221 centré en (225, 225).
+  Cadran « Christen Dijoux » (Watch Face Format v1), au thème du portfolio :
+  anneau de progression des pas sur le bord, nom en haut, température et indice UV,
+  heure, date, pas du jour et ville actuelle en bas (fournie par l'app).
+  Température et UV viennent des complications de l'app Météo de Samsung.
+  Repère : cercle de 450 px centré en (225, 225) ; angles en degrés depuis midi, sens horaire.
 -->
 <WatchFace width="450" height="450" clipShape="CIRCLE">
     <Metadata key="CLOCK_TYPE" value="DIGITAL" />
@@ -10,153 +12,121 @@
 
     <Scene backgroundColor="#FF050505">
 
-        <!-- Graduations : masquées en mode veille (écran toujours allumé) -->
-        <Group name="ticks" x="0" y="0" width="450" height="450">
+        <!-- Anneau des pas : piste, puis progression vers l'objectif du jour -->
+        <Group name="steps_ring" x="0" y="0" width="450" height="450">
             <Variant mode="AMBIENT" target="alpha" value="0" />
             <PartDraw x="0" y="0" width="450" height="450">
-                <Line startX="225.0" startY="4.0" endX="225.0" endY="18.0"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="248.1" startY="5.2" endX="247.5" endY="11.2"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="270.9" startY="8.8" endX="269.7" endY="14.7"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="293.3" startY="14.8" endX="291.4" endY="20.5"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="314.9" startY="23.1" endX="312.4" endY="28.6"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="335.5" startY="33.6" endX="328.5" endY="45.7"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="354.9" startY="46.2" endX="351.4" endY="51.1"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="372.9" startY="60.8" endX="368.9" endY="65.2"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="389.2" startY="77.1" endX="384.8" endY="81.1"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="403.8" startY="95.1" endX="398.9" endY="98.6"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="416.4" startY="114.5" endX="404.3" endY="121.5"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="426.9" startY="135.1" endX="421.4" endY="137.6"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="435.2" startY="156.7" endX="429.5" endY="158.6"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="441.2" startY="179.1" endX="435.3" endY="180.3"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="444.8" startY="201.9" endX="438.8" endY="202.5"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="446.0" startY="225.0" endX="432.0" endY="225.0"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="444.8" startY="248.1" endX="438.8" endY="247.5"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="441.2" startY="270.9" endX="435.3" endY="269.7"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="435.2" startY="293.3" endX="429.5" endY="291.4"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="426.9" startY="314.9" endX="421.4" endY="312.4"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="416.4" startY="335.5" endX="404.3" endY="328.5"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="403.8" startY="354.9" endX="398.9" endY="351.4"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="389.2" startY="372.9" endX="384.8" endY="368.9"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="372.9" startY="389.2" endX="368.9" endY="384.8"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="354.9" startY="403.8" endX="351.4" endY="398.9"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="335.5" startY="416.4" endX="328.5" endY="404.3"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="314.9" startY="426.9" endX="312.4" endY="421.4"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="293.3" startY="435.2" endX="291.4" endY="429.5"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="270.9" startY="441.2" endX="269.7" endY="435.3"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="248.1" startY="444.8" endX="247.5" endY="438.8"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="225.0" startY="446.0" endX="225.0" endY="432.0"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="201.9" startY="444.8" endX="202.5" endY="438.8"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="179.1" startY="441.2" endX="180.3" endY="435.3"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="156.7" startY="435.2" endX="158.6" endY="429.5"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="135.1" startY="426.9" endX="137.6" endY="421.4"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="114.5" startY="416.4" endX="121.5" endY="404.3"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="95.1" startY="403.8" endX="98.6" endY="398.9"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="77.1" startY="389.2" endX="81.1" endY="384.8"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="60.8" startY="372.9" endX="65.2" endY="368.9"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="46.2" startY="354.9" endX="51.1" endY="351.4"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="33.6" startY="335.5" endX="45.7" endY="328.5"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="23.1" startY="314.9" endX="28.6" endY="312.4"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="14.8" startY="293.3" endX="20.5" endY="291.4"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="8.8" startY="270.9" endX="14.7" endY="269.7"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="5.2" startY="248.1" endX="11.2" endY="247.5"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="4.0" startY="225.0" endX="18.0" endY="225.0"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="5.2" startY="201.9" endX="11.2" endY="202.5"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="8.8" startY="179.1" endX="14.7" endY="180.3"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="14.8" startY="156.7" endX="20.5" endY="158.6"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="23.1" startY="135.1" endX="28.6" endY="137.6"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="33.6" startY="114.5" endX="45.7" endY="121.5"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="46.2" startY="95.1" endX="51.1" endY="98.6"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="60.8" startY="77.1" endX="65.2" endY="81.1"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="77.1" startY="60.8" endX="81.1" endY="65.2"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="95.1" startY="46.2" endX="98.6" endY="51.1"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="114.5" startY="33.6" endX="121.5" endY="45.7"><Stroke color="#70F2F2EE" thickness="2" /></Line>
-                <Line startX="135.1" startY="23.1" endX="137.6" endY="28.6"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="156.7" startY="14.8" endX="158.6" endY="20.5"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="179.1" startY="8.8" endX="180.3" endY="14.7"><Stroke color="#38F2F2EE" thickness="2" /></Line>
-                <Line startX="201.9" startY="5.2" endX="202.5" endY="11.2"><Stroke color="#38F2F2EE" thickness="2" /></Line>
+                <Arc centerX="225" centerY="225" width="424" height="424" startAngle="0" endAngle="360">
+                    <Stroke color="#FF262624" thickness="8" />
+                </Arc>
+            </PartDraw>
+            <PartDraw x="0" y="0" width="450" height="450">
+                <Arc centerX="225" centerY="225" width="424" height="424" startAngle="0" endAngle="0">
+                    <Transform target="endAngle" value="clamp([STEP_PERCENT], 0, 100) * 3.6" />
+                    <Stroke color="#FFF2F2EE" thickness="8" cap="ROUND" />
+                </Arc>
             </PartDraw>
         </Group>
 
-        <!-- Nom écrit le long du bord, en haut -->
+        <!-- Repères des heures, à l'intérieur de l'anneau -->
+        <Group name="hour_marks" x="0" y="0" width="450" height="450">
+            <Variant mode="AMBIENT" target="alpha" value="0" />
+            <PartDraw x="0" y="0" width="450" height="450">
+                <Line startX="225.0" startY="28.0" endX="225.0" endY="38.0"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+                <Line startX="323.5" startY="54.4" endX="318.5" endY="63.1"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+                <Line startX="395.6" startY="126.5" endX="386.9" endY="131.5"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+                <Line startX="422.0" startY="225.0" endX="412.0" endY="225.0"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+                <Line startX="395.6" startY="323.5" endX="386.9" endY="318.5"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+                <Line startX="323.5" startY="395.6" endX="318.5" endY="386.9"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+                <Line startX="225.0" startY="422.0" endX="225.0" endY="412.0"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+                <Line startX="126.5" startY="395.6" endX="131.5" endY="386.9"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+                <Line startX="54.4" startY="323.5" endX="63.1" endY="318.5"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+                <Line startX="28.0" startY="225.0" endX="38.0" endY="225.0"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+                <Line startX="54.4" startY="126.5" endX="63.1" endY="131.5"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+                <Line startX="126.5" startY="54.4" endX="131.5" endY="63.1"><Stroke color="#59F2F2EE" thickness="2" cap="ROUND" /></Line>
+            </PartDraw>
+        </Group>
+
+        <!-- Nom le long du bord, en haut -->
         <PartText x="0" y="0" width="450" height="450">
-            <Variant mode="AMBIENT" target="alpha" value="140" />
-            <TextCircular centerX="225" centerY="225" width="372" height="372" startAngle="-62" endAngle="62" direction="CLOCKWISE" align="CENTER">
-                <Font family="geist_mono_regular" size="19" color="#A8F2F2EE">CHRISTEN DIJOUX · PORTFOLIO</Font>
+            <Variant mode="AMBIENT" target="alpha" value="0" />
+            <TextCircular centerX="225" centerY="225" width="330" height="330" startAngle="-55" endAngle="55" direction="CLOCKWISE" align="CENTER">
+                <Font family="geist_mono_regular" size="19" color="#A8F2F2EE">CHRISTEN DIJOUX</Font>
             </TextCircular>
         </PartText>
 
+        <!-- Température et indice UV : complications de l'app Météo de Samsung, affichées en texte sur une ligne -->
+        <ComplicationSlot slotId="1" x="0" y="0" width="450" height="450" supportedTypes="SHORT_TEXT" isCustomizable="FALSE">
+            <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.samsung.android.watch.weather/com.samsung.android.watch.weather.complication.WeatherComplicationService" primaryProviderType="SHORT_TEXT" />
+            <BoundingBox x="110" y="96" width="110" height="40" />
+            <Variant mode="AMBIENT" target="alpha" value="0" />
+            <Complication type="SHORT_TEXT">
+                <PartText x="20" y="98" width="200" height="36">
+                    <Text align="END">
+                        <Font family="geist_mono_regular" size="22" color="#CCF2F2EE"><Template>%s ·<Parameter expression="[COMPLICATION.TEXT]" /></Template></Font>
+                    </Text>
+                </PartText>
+            </Complication>
+        </ComplicationSlot>
+        <ComplicationSlot slotId="2" x="0" y="0" width="450" height="450" supportedTypes="RANGED_VALUE" isCustomizable="FALSE">
+            <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="RANGED_VALUE" primaryProvider="com.samsung.android.watch.weather/com.samsung.android.watch.weather.complication.UvIndexComplicationService" primaryProviderType="RANGED_VALUE" />
+            <BoundingBox x="230" y="96" width="110" height="40" />
+            <Variant mode="AMBIENT" target="alpha" value="0" />
+            <Complication type="RANGED_VALUE">
+                <PartText x="232" y="98" width="200" height="36">
+                    <Text align="START">
+                        <Font family="geist_mono_regular" size="22" color="#CCF2F2EE"><Template>UV %s<Parameter expression="round([COMPLICATION.RANGED_VALUE_VALUE])" /></Template></Font>
+                    </Text>
+                </PartText>
+            </Complication>
+        </ComplicationSlot>
+
         <!-- Heure -->
-        <DigitalClock x="0" y="118" width="450" height="150">
+        <DigitalClock x="0" y="128" width="450" height="150">
+            <Variant mode="AMBIENT" target="alpha" value="190" />
             <TimeText format="hh:mm" hourFormat="SYNC_TO_DEVICE" align="CENTER" x="0" y="0" width="450" height="150">
-                <Font family="big_shoulders_display_light" size="148" color="#FFF2F2EE" />
+                <Font family="big_shoulders_display_light" size="150" color="#FFF2F2EE" />
             </TimeText>
         </DigitalClock>
 
-        <!-- Date et ville, en majuscules dans la langue de la montre -->
-        <PartText x="25" y="266" width="400" height="34">
-            <Variant mode="AMBIENT" target="alpha" value="160" />
+        <!-- Date, en majuscules dans la langue de la montre -->
+        <PartText x="25" y="276" width="400" height="34">
+            <Variant mode="AMBIENT" target="alpha" value="128" />
             <Text align="CENTER">
                 <Font family="geist_mono_regular" size="22" color="#A8F2F2EE">
                     <Upper>
-                        <Template>%s %s %s · SAGUENAY<Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[DAY]" /><Parameter expression="[MONTH_S]" /></Template>
+                        <Template>%s %s %s<Parameter expression="[DAY_OF_WEEK_S]" /><Parameter expression="[DAY]" /><Parameter expression="[MONTH_S]" /></Template>
                     </Upper>
                 </Font>
             </Text>
         </PartText>
 
-        <!-- Complication de gauche : pas par défaut -->
-        <ComplicationSlot slotId="0" x="117" y="314" width="96" height="96" supportedTypes="SHORT_TEXT MONOCHROMATIC_IMAGE" isCustomizable="TRUE">
-            <DefaultProviderPolicy defaultSystemProvider="STEP_COUNT" defaultSystemProviderType="SHORT_TEXT" />
-            <BoundingOval x="0" y="0" width="96" height="96" />
+        <!-- Pas du jour et objectif, sur une ligne centrée -->
+        <PartText x="25" y="312" width="400" height="36">
             <Variant mode="AMBIENT" target="alpha" value="0" />
-            <Complication type="SHORT_TEXT">
-                <PartDraw x="0" y="0" width="96" height="96">
-                    <Ellipse x="1" y="1" width="94" height="94"><Stroke color="#47F2F2EE" thickness="2" /></Ellipse>
-                </PartDraw>
-                <PartImage x="35" y="18" width="26" height="26" tintColor="#FFF2F2EE">
-                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
-                </PartImage>
-                <PartText x="8" y="48" width="80" height="30">
-                    <Text align="CENTER">
-                        <Font family="geist_mono_regular" size="20" color="#FFF2F2EE"><Template>%s<Parameter expression="[COMPLICATION.TEXT]" /></Template></Font>
-                    </Text>
-                </PartText>
-            </Complication>
-            <Complication type="MONOCHROMATIC_IMAGE">
-                <PartDraw x="0" y="0" width="96" height="96">
-                    <Ellipse x="1" y="1" width="94" height="94"><Stroke color="#47F2F2EE" thickness="2" /></Ellipse>
-                </PartDraw>
-                <PartImage x="28" y="28" width="40" height="40" tintColor="#FFF2F2EE">
-                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
-                </PartImage>
-            </Complication>
-        </ComplicationSlot>
+            <Text align="CENTER">
+                <Font family="geist_mono_regular" size="23" color="#FFF2F2EE">
+                    <InlineImage resource="ic_steps" width="24" height="24" />
+                    <Template> %s / %s<Parameter expression="[STEP_COUNT]" /><Parameter expression="[STEP_GOAL]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
 
-        <!-- Complication de droite : ma carte de visite en QR code, fournie par l'app -->
-        <ComplicationSlot slotId="1" x="237" y="314" width="96" height="96" supportedTypes="SHORT_TEXT MONOCHROMATIC_IMAGE" isCustomizable="TRUE">
-            <DefaultProviderPolicy defaultSystemProvider="WATCH_BATTERY" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.christendijoux.watch/com.christendijoux.watch.complication.QrComplicationService" primaryProviderType="SHORT_TEXT" />
-            <BoundingOval x="0" y="0" width="96" height="96" />
-            <Variant mode="AMBIENT" target="alpha" value="0" />
+        <!-- Ville actuelle le long du bord, en bas : complication fixe fournie par l'app (localisation) -->
+        <ComplicationSlot slotId="0" x="0" y="0" width="450" height="450" supportedTypes="SHORT_TEXT" isCustomizable="FALSE">
+            <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.christendijoux.watch/com.christendijoux.watch.complication.CityComplicationService" primaryProviderType="SHORT_TEXT" />
+            <BoundingBox x="125" y="372" width="200" height="50" />
+            <Variant mode="AMBIENT" target="alpha" value="128" />
             <Complication type="SHORT_TEXT">
-                <PartDraw x="0" y="0" width="96" height="96">
-                    <Ellipse x="1" y="1" width="94" height="94"><Stroke color="#47F2F2EE" thickness="2" /></Ellipse>
-                </PartDraw>
-                <PartImage x="35" y="18" width="26" height="26" tintColor="#FFF2F2EE">
-                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
-                </PartImage>
-                <PartText x="8" y="48" width="80" height="30">
-                    <Text align="CENTER">
-                        <Font family="geist_mono_regular" size="20" color="#FFF2F2EE"><Template>%s<Parameter expression="[COMPLICATION.TEXT]" /></Template></Font>
-                    </Text>
+                <PartText x="0" y="0" width="450" height="450">
+                    <TextCircular centerX="225" centerY="225" width="330" height="330" startAngle="235" endAngle="125" direction="COUNTER_CLOCKWISE" align="CENTER">
+                        <Font family="geist_mono_regular" size="19" color="#A8F2F2EE">
+                            <Upper>
+                                <Template>%s<Parameter expression="[COMPLICATION.TEXT]" /></Template>
+                            </Upper>
+                        </Font>
+                    </TextCircular>
                 </PartText>
-            </Complication>
-            <Complication type="MONOCHROMATIC_IMAGE">
-                <PartDraw x="0" y="0" width="96" height="96">
-                    <Ellipse x="1" y="1" width="94" height="94"><Stroke color="#47F2F2EE" thickness="2" /></Ellipse>
-                </PartDraw>
-                <PartImage x="28" y="28" width="40" height="40" tintColor="#FFF2F2EE">
-                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]" />
-                </PartImage>
             </Complication>
         </ComplicationSlot>
 

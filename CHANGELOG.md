@@ -2,6 +2,14 @@
 
 Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions selon [SemVer](https://semver.org/lang/fr/).
 
+## [0.6.0] — 2026-10-26
+
+### Modifié
+- Nouveau design du cadran : anneau de progression des pas sur le bord (vers l'objectif du jour), « CHRISTEN DIJOUX » seul en haut, température et indice UV (complications de l'app Météo de Samsung), heure, date, pas du jour avec l'objectif, et ville actuelle le long du bord en bas. En mode toujours allumé, seuls l'heure, la date et la ville restent, atténuées.
+
+### Ajouté
+- Complication « Ville » : la ville où se trouve la montre, à partir de sa position approximative. L'autorisation de localisation est demandée une seule fois, à l'ouverture de l'app ; la ville est mise à jour à chaque ouverture et toutes les 30 minutes quand le système le permet.
+
 ## [0.5.0] — 2026-10-25
 
 ### Ajouté
@@ -74,6 +82,7 @@ Première version de l'app Wear OS.
 - L'heure en haut d'écran s'efface au défilement au lieu de chevaucher le contenu.
 - Le message « Ouvert sur votre téléphone » n'apparaît plus quand aucun téléphone n'est connecté.
 
+[0.6.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.6.0
 [0.5.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.5.0
 [0.4.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.4.0
 [0.3.2]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.3.2

@@ -44,6 +44,7 @@
     <string name="contact_call">Call</string>
     <string name="contact_availability">Available — Synaptia Web</string>
     <string name="contact_card">My card</string>
+    <string name="complication_city">City</string>
 
     <!-- Tuile -->
     <string name="tile_label">Contact card</string>

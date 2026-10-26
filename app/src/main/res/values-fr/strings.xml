@@ -40,6 +40,7 @@
     <string name="contact_call">Appel</string>
     <string name="contact_availability">Dispo — Synaptia Web</string>
     <string name="contact_card">Ma carte</string>
+    <string name="complication_city">Ville</string>
 
     <!-- Tuile -->
     <string name="tile_label">Carte de contact</string>
