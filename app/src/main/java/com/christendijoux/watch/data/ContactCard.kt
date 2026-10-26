@@ -9,6 +9,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 /**
  * Carte de visite vCard 3.0, reprise du portfolio web (CV et JSON-LD) :
  * un scan avec l'appareil photo d'un téléphone propose d'ajouter le contact.
+ * Sans paramètres TYPE= superflus : moins d'octets, donc des modules plus gros à l'écran.
  */
 fun contactCard(jobTitle: String): String = listOf(
     "BEGIN:VCARD",
@@ -17,9 +18,9 @@ fun contactCard(jobTitle: String): String = listOf(
     "FN:${Portfolio.NAME}",
     "TITLE:${escape(jobTitle)}",
     "ORG:${escape(Portfolio.COMPANY)}",
-    "TEL;TYPE=CELL:${Portfolio.PHONE}",
-    "EMAIL;TYPE=INTERNET:${Portfolio.EMAIL}",
-    "ADR;TYPE=WORK:;;;${Portfolio.CITY};${Portfolio.REGION};;${Portfolio.COUNTRY}",
+    "TEL:${Portfolio.PHONE}",
+    "EMAIL:${Portfolio.EMAIL}",
+    "ADR:;;;${Portfolio.CITY};${Portfolio.REGION};;${Portfolio.COUNTRY}",
     "URL:${Portfolio.SITE}",
     "URL:${Portfolio.LINKEDIN}",
     "URL:${Portfolio.GITHUB}",
