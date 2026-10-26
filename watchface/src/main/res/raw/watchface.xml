@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Cadran « Christen Dijoux » (Watch Face Format v2), au thème du portfolio :
+  Cadran « Christen Dijoux » (Watch Face Format v1), au thème du portfolio :
   anneau de progression des pas sur le bord, nom en haut, température et indice UV,
   heure, date, pas du jour et ville actuelle en bas (fournie par l'app).
+  Température et UV viennent des complications de l'app Météo de Samsung.
   Repère : cercle de 450 px centré en (225, 225) ; angles en degrés depuis midi, sens horaire.
 -->
 <WatchFace width="450" height="450" clipShape="CIRCLE">
@@ -54,22 +55,31 @@
             </TextCircular>
         </PartText>
 
-        <!-- Température et indice UV, seulement si la montre a des données météo -->
-        <Condition>
-            <Expressions>
-                <Expression name="weather"><![CDATA[[WEATHER.IS_AVAILABLE]]]></Expression>
-            </Expressions>
-            <Compare expression="weather">
-                <PartText x="75" y="98" width="300" height="36">
-                    <Variant mode="AMBIENT" target="alpha" value="0" />
-                    <Text align="CENTER">
-                        <Font family="geist_mono_regular" size="22" color="#CCF2F2EE">
-                            <Template>%s° · UV %s<Parameter expression="round([WEATHER.TEMPERATURE])" /><Parameter expression="round([WEATHER.HOURS.0.UV_INDEX])" /></Template>
-                        </Font>
+        <!-- Température et indice UV : complications de l'app Météo de Samsung, affichées en texte sur une ligne -->
+        <ComplicationSlot slotId="1" x="0" y="0" width="450" height="450" supportedTypes="SHORT_TEXT" isCustomizable="FALSE">
+            <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.samsung.android.watch.weather/com.samsung.android.watch.weather.complication.WeatherComplicationService" primaryProviderType="SHORT_TEXT" />
+            <BoundingBox x="110" y="96" width="110" height="40" />
+            <Variant mode="AMBIENT" target="alpha" value="0" />
+            <Complication type="SHORT_TEXT">
+                <PartText x="20" y="98" width="200" height="36">
+                    <Text align="END">
+                        <Font family="geist_mono_regular" size="22" color="#CCF2F2EE"><Template>%s ·<Parameter expression="[COMPLICATION.TEXT]" /></Template></Font>
                     </Text>
                 </PartText>
-            </Compare>
-        </Condition>
+            </Complication>
+        </ComplicationSlot>
+        <ComplicationSlot slotId="2" x="0" y="0" width="450" height="450" supportedTypes="RANGED_VALUE" isCustomizable="FALSE">
+            <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="RANGED_VALUE" primaryProvider="com.samsung.android.watch.weather/com.samsung.android.watch.weather.complication.UvIndexComplicationService" primaryProviderType="RANGED_VALUE" />
+            <BoundingBox x="230" y="96" width="110" height="40" />
+            <Variant mode="AMBIENT" target="alpha" value="0" />
+            <Complication type="RANGED_VALUE">
+                <PartText x="232" y="98" width="200" height="36">
+                    <Text align="START">
+                        <Font family="geist_mono_regular" size="22" color="#CCF2F2EE"><Template>UV %s<Parameter expression="round([COMPLICATION.RANGED_VALUE_VALUE])" /></Template></Font>
+                    </Text>
+                </PartText>
+            </Complication>
+        </ComplicationSlot>
 
         <!-- Heure -->
         <DigitalClock x="0" y="128" width="450" height="150">
@@ -91,27 +101,16 @@
             </Text>
         </PartText>
 
-        <!-- Pas du jour et objectif -->
-        <Group name="steps" x="0" y="0" width="450" height="450">
+        <!-- Pas du jour et objectif, sur une ligne centrée -->
+        <PartText x="25" y="312" width="400" height="36">
             <Variant mode="AMBIENT" target="alpha" value="0" />
-            <PartImage x="141" y="318" width="26" height="26">
-                <Image resource="ic_steps" />
-            </PartImage>
-            <PartText x="175" y="312" width="86" height="36">
-                <Text align="START">
-                    <Font family="geist_mono_regular" size="24" color="#FFF2F2EE">
-                        <Template>%s<Parameter expression="[STEP_COUNT]" /></Template>
-                    </Font>
-                </Text>
-            </PartText>
-            <PartText x="257" y="316" width="90" height="30">
-                <Text align="START">
-                    <Font family="geist_mono_regular" size="17" color="#66F2F2EE">
-                        <Template>/%s<Parameter expression="[STEP_GOAL]" /></Template>
-                    </Font>
-                </Text>
-            </PartText>
-        </Group>
+            <Text align="CENTER">
+                <Font family="geist_mono_regular" size="23" color="#FFF2F2EE">
+                    <InlineImage resource="ic_steps" width="24" height="24" />
+                    <Template> %s / %s<Parameter expression="[STEP_COUNT]" /><Parameter expression="[STEP_GOAL]" /></Template>
+                </Font>
+            </Text>
+        </PartText>
 
         <!-- Ville actuelle le long du bord, en bas : complication fixe fournie par l'app (localisation) -->
         <ComplicationSlot slotId="0" x="0" y="0" width="450" height="450" supportedTypes="SHORT_TEXT" isCustomizable="FALSE">
