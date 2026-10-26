@@ -32,11 +32,11 @@ jobs:
       - name: Rendre gradlew exécutable
         run: chmod +x gradlew
 
-      # Validateur officiel de Google : le cadran doit respecter le Watch Face Format v1
+      # Validateur officiel de Google : le cadran doit respecter le Watch Face Format v2
       - name: Valider le cadran (Watch Face Format)
         run: |
           curl -sSfL -o "$RUNNER_TEMP/wff-validator.jar" https://github.com/google/watchface/releases/download/release/wff-validator.jar
-          java -jar "$RUNNER_TEMP/wff-validator.jar" 1 watchface/src/main/res/raw/watchface.xml
+          java -jar "$RUNNER_TEMP/wff-validator.jar" 2 watchface/src/main/res/raw/watchface.xml
 
       - name: Compiler les APK de debug (app et cadran)
         run: ./gradlew assembleDebug --stacktrace

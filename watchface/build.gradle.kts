@@ -9,11 +9,11 @@ android {
 
     defaultConfig {
         applicationId = "com.christendijoux.watch.watchface"
-        // Watch Face Format v1 : Wear OS 4+ (API 33)
-        minSdk = 33
+        // Watch Face Format v2 (météo) : Wear OS 5+ (API 34)
+        minSdk = 34
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.5.0"
+        versionCode = 2
+        versionName = "0.6.0"
     }
 
     // Même clé fixe que l'app (voir app/build.gradle.kts)
