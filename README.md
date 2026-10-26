@@ -49,7 +49,7 @@ It carries over the website's identity — monochrome, editorial, condensed type
 
 <p align="center"><img src="docs/screens/11-watch-face.png" width="240" alt="Christen Dijoux watch face"></p>
 
-<p align="center"><sub>The home screen as a real watch face: minute ticks, name along the edge, time, date and two complications (steps and the QR business card by default).</sub></p>
+<p align="center"><sub>A watch face in the portfolio's style: step progress ring around the edge, name, temperature and UV index, time, date, steps and the current city.</sub></p>
 
 <sub>Screenshots of the real app on a Samsung Galaxy Watch (Wear OS 6, 480 px). The original design mockups are in <a href="docs/design">docs/design</a>.</sub>
 
@@ -61,7 +61,8 @@ It carries over the website's identity — monochrome, editorial, condensed type
 - **Contact** — email, call, LinkedIn and GitHub in one tap. Calls go out from the watch when it can, otherwise from the phone.
 - **Business card QR code** — name, title, company, phone, email, city, website, LinkedIn and GitHub as a vCard; scanning it with a phone camera offers to add the contact. Full brightness and screen kept on while it is shown, and it stays on screen in always-on mode so it can still be scanned with the wrist lowered.
 - **Contact card tile** — swipe from the watch face to see availability and jump straight to the QR code, a call or an email.
-- **Watch face** — the home screen as an installable watch face (Watch Face Format): minute ticks, name along the edge, time in the site's typeface, localized date, and two customizable complications. A dimmed always-on mode hides ticks and complications.
+- **Watch face** — an installable watch face in the portfolio's style (Watch Face Format): a ring that fills up toward the daily step goal, name along the top edge, temperature and UV index (from Samsung Weather), time in the site's typeface, localized date, steps, and the current city along the bottom edge. The always-on mode keeps only the time, date and city, dimmed.
+- **"City" complication** — the city the watch is in, from its approximate location (permission asked once when the app opens).
 - **"My card" complication** — the app provides a complication that opens the QR business card in one tap, on this watch face or any other.
 - **Star game** — the website's hidden easter egg: catch as many stars as you can in 20 seconds, with haptics on every hit and the best score kept on the watch.
 - **English and French** — follows the watch language by default; a FR / EN switch at the top of the menu overrides it and is remembered (the tile follows too).
@@ -79,8 +80,8 @@ It carries over the website's identity — monochrome, editorial, condensed type
 ```bash
 adb pair <IP>:<PAIRING_PORT>
 adb connect <IP>:<PORT>
-adb install -r portfolio-watch-v0.5.0.apk
-adb install -r portfolio-watch-face-v0.5.0.apk
+adb install -r portfolio-watch-v0.6.0.apk
+adb install -r portfolio-watch-face-v0.6.0.apk
 ```
 
 `-r` updates the installed app and keeps its data. Since v0.2.0, releases are signed with the same key, so updates install on top of each other. To move from v0.1.0 (or a debug APK) to a release, uninstall the old version once (`adb uninstall com.christendijoux.watch`).
@@ -89,7 +90,7 @@ adb install -r portfolio-watch-face-v0.5.0.apk
 
 To add the tile: long-press the watch face or swipe to the end of your tiles, tap **+**, then **Contact card**.
 
-To use the watch face: long-press the current watch face, swipe to the end, tap **+**, then **Christen Dijoux**. Long-press it again to customize the two complications.
+To use the watch face: long-press the current watch face, swipe to the end, tap **+**, then **Christen Dijoux**. On first launch after installing, the app asks once for location access: it is only used to show the current city on the watch face.
 
 ### From CI
 
@@ -168,7 +169,7 @@ portfolio-watch/
 │   │   ├── data/Portfolio.kt         # Projects, journey, links (from the website)
 │   │   ├── data/ContactCard.kt       # vCard business card and QR code
 │   │   ├── tile/ContactTileService.kt # Tile: availability, QR, call, email
-│   │   ├── complication/             # "My card" complication for any watch face
+│   │   ├── complication/             # "My card" and "City" complications
 │   │   ├── util/                     # Open on phone, clock, app language
 │   │   └── ui/
 │   │       ├── WearApp.kt            # Navigation between screens
