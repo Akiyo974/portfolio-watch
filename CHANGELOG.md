@@ -2,7 +2,7 @@
 
 Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions selon [SemVer](https://semver.org/lang/fr/).
 
-## [Non publié]
+## [0.3.0] — 2026-10-25
 
 ### Ajouté
 - Tuile Wear OS « Carte de contact » : nom, disponibilité et trois raccourcis (carte QR, appel, e-mail) en un glissement depuis le cadran, plus un accès à l'app. Elle suit la langue choisie dans l'app.
@@ -46,6 +46,7 @@ Première version de l'app Wear OS.
 - L'heure en haut d'écran s'efface au défilement au lieu de chevaucher le contenu.
 - Le message « Ouvert sur votre téléphone » n'apparaît plus quand aucun téléphone n'est connecté.
 
+[0.3.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.3.0
 [0.2.1]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.2.1
 [0.2.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.2.0
 [0.1.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.1.0
