@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.wear.protolayout.material)
     implementation(libs.androidx.concurrent.futures)
     implementation(libs.wear.watchface.complications.data.source.ktx)
+    implementation(libs.androidx.fragment)
 
     testImplementation(libs.junit)
 

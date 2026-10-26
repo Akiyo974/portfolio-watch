@@ -13,6 +13,7 @@ protolayout = "1.2.1"
 concurrentFutures = "1.2.0"
 junit = "4.13.2"
 watchfaceComplications = "1.3.0"
+fragment = "1.8.9"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +35,8 @@ wear-protolayout-material = { group = "androidx.wear.protolayout", name = "proto
 androidx-concurrent-futures = { group = "androidx.concurrent", name = "concurrent-futures", version.ref = "concurrentFutures" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 wear-watchface-complications-data-source-ktx = { group = "androidx.wear.watchface", name = "watchface-complications-data-source-ktx", version.ref = "watchfaceComplications" }
+# Imposée : androidx.wear embarque une vieille version, incompatible avec les demandes d'autorisation (Activity Result API)
+androidx-fragment = { group = "androidx.fragment", name = "fragment", version.ref = "fragment" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
