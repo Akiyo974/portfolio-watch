@@ -2,6 +2,11 @@
 
 Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions selon [SemVer](https://semver.org/lang/fr/).
 
+## [Non publié]
+
+### Ajouté
+- Sélecteur de langue FR / EN en haut du menu : le choix est gardé et prime sur la langue de la montre (qui reste la langue par défaut tant que rien n'est choisi).
+
 ## [0.2.0] — 2026-10-25
 
 ### Ajouté
