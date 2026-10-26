@@ -18,6 +18,8 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.dp
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
 import androidx.wear.compose.foundation.lazy.items
@@ -52,7 +54,6 @@ fun JourneyScreen() {
             }
             // Le trajet défile avec la liste : il ne passe plus jamais sur le texte
             item { FlightPath() }
-            item { Label(stringResource(R.string.journey_route)) }
             items(Portfolio.experiences) { ExperienceRow(it) }
         }
     }
@@ -77,10 +78,25 @@ private fun ExperienceRow(experience: Experience) {
     }
 }
 
-/** Arc pointillé du départ (cercle vide) à l'arrivée (point plein), bombé comme une trajectoire de vol. */
+/**
+ * Arc pointillé du départ (cercle vide) à l'arrivée (point plein), bombé comme une trajectoire de vol,
+ * avec les deux villes sous ses extrémités : assez étroit pour ne jamais être coupé par l'écran rond.
+ */
 @Composable
 private fun FlightPath() {
-    Canvas(Modifier.fillMaxWidth(0.6f).height(28.dp)) {
+    val route = stringResource(R.string.journey_route)
+    Column(Modifier.fillMaxWidth(0.68f).clearAndSetSemantics { contentDescription = route }) {
+        FlightArc()
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            Label(stringResource(R.string.journey_from))
+            Label(Portfolio.CITY)
+        }
+    }
+}
+
+@Composable
+private fun FlightArc() {
+    Canvas(Modifier.fillMaxWidth().height(28.dp)) {
         val stroke = 1.5.dp.toPx()
         val dot = 3.5.dp.toPx()
         val start = Offset(dot + stroke, size.height - dot - stroke)

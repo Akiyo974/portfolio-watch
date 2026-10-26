@@ -2,6 +2,11 @@
 
 Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions selon [SemVer](https://semver.org/lang/fr/).
 
+## [0.3.2] — 2026-10-25
+
+### Corrigé
+- Écran Parcours : « La Réunion » et « Saguenay » sont placés sous les extrémités du trajet au lieu d'une ligne trop large, coupée par les bords de l'écran rond.
+
 ## [0.3.1] — 2026-10-25
 
 ### Corrigé
@@ -51,6 +56,7 @@ Première version de l'app Wear OS.
 - L'heure en haut d'écran s'efface au défilement au lieu de chevaucher le contenu.
 - Le message « Ouvert sur votre téléphone » n'apparaît plus quand aucun téléphone n'est connecté.
 
+[0.3.2]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.3.2
 [0.3.1]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.3.1
 [0.3.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.3.0
 [0.2.1]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.2.1
