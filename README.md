@@ -71,7 +71,7 @@ It carries over the website's identity — monochrome, editorial, condensed type
 ```bash
 adb pair <IP>:<PAIRING_PORT>
 adb connect <IP>:<PORT>
-adb install -r portfolio-watch-v0.3.1.apk
+adb install -r portfolio-watch-v0.3.2.apk
 ```
 
 `-r` updates the installed app and keeps its data. Since v0.2.0, releases are signed with the same key, so updates install on top of each other. To move from v0.1.0 (or a debug APK) to a release, uninstall the old version once (`adb uninstall com.christendijoux.watch`).
