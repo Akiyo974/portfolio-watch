@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "portfolio-watch"
 include(":app")
+include(":watchface")

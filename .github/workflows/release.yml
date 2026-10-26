@@ -30,6 +30,11 @@ jobs:
       - name: Vérifier que le tag correspond à versionName
         run: |
           version=$(grep -oP 'versionName = "\K[^"]+' app/build.gradle.kts)
+          face=$(grep -oP 'versionName = "\K[^"]+' watchface/build.gradle.kts)
+          if [ "$face" != "$version" ]; then
+            echo "::error::versionName différent entre l'app ($version) et le cadran ($face)"
+            exit 1
+          fi
           if [ "v$version" != "$GITHUB_REF_NAME" ]; then
             echo "::error::Le tag $GITHUB_REF_NAME ne correspond pas à versionName ($version) dans app/build.gradle.kts"
             exit 1
@@ -59,10 +64,12 @@ jobs:
         run: |
           apksigner=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)/apksigner
           "$apksigner" verify --print-certs app/build/outputs/apk/release/app-release.apk
+          "$apksigner" verify --print-certs watchface/build/outputs/apk/release/watchface-release.apk
 
       - name: Préparer l'APK et les notes de version
         run: |
           cp app/build/outputs/apk/release/app-release.apk "portfolio-watch-$GITHUB_REF_NAME.apk"
+          cp watchface/build/outputs/apk/release/watchface-release.apk "portfolio-watch-face-$GITHUB_REF_NAME.apk"
           # Section du CHANGELOG correspondant à la version, jusqu'à la suivante
           awk -v v="${GITHUB_REF_NAME#v}" 'index($0, "## [" v "]") == 1 { on = 1; next } /^## \[/ && on { exit } on' CHANGELOG.md > notes.md
           cat notes.md
@@ -71,4 +78,6 @@ jobs:
         with:
           name: ${{ github.ref_name }}
           body_path: notes.md
-          files: portfolio-watch-${{ github.ref_name }}.apk
+          files: |
+            portfolio-watch-${{ github.ref_name }}.apk
+            portfolio-watch-face-${{ github.ref_name }}.apk
