@@ -29,6 +29,14 @@ object Portfolio {
             tags = listOf("Next.js", "Prisma", "TypeScript"),
         ),
         Project(
+            id = "portfolio-watch",
+            name = "Portfolio Watch",
+            year = "2026",
+            status = Status.InProgress,
+            summary = R.string.project_portfolio_watch_summary,
+            tags = listOf("Kotlin", "Compose", "Wear OS"),
+        ),
+        Project(
             id = "ctreq",
             name = "CTREQ",
             year = "2025",
