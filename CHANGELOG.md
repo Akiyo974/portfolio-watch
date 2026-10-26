@@ -2,7 +2,7 @@
 
 Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions selon [SemVer](https://semver.org/lang/fr/).
 
-## [Non publié]
+## [0.2.1] — 2026-10-25
 
 ### Ajouté
 - Sélecteur de langue FR / EN en haut du menu : le choix est gardé et prime sur la langue de la montre (qui reste la langue par défaut tant que rien n'est choisi).
@@ -41,5 +41,6 @@ Première version de l'app Wear OS.
 - L'heure en haut d'écran s'efface au défilement au lieu de chevaucher le contenu.
 - Le message « Ouvert sur votre téléphone » n'apparaît plus quand aucun téléphone n'est connecté.
 
+[0.2.1]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.2.1
 [0.2.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.2.0
 [0.1.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.1.0
