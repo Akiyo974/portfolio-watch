@@ -18,14 +18,14 @@ jobs:
     timeout-minutes: 20
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: 17
 
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
 
       - name: Vérifier que le tag correspond à versionName
         run: |
@@ -67,7 +67,7 @@ jobs:
           awk -v v="${GITHUB_REF_NAME#v}" 'index($0, "## [" v "]") == 1 { on = 1; next } /^## \[/ && on { exit } on' CHANGELOG.md > notes.md
           cat notes.md
 
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           name: ${{ github.ref_name }}
           body_path: notes.md

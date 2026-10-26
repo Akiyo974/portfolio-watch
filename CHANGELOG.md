@@ -2,6 +2,17 @@
 
 Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions selon [SemVer](https://semver.org/lang/fr/).
 
+## [0.4.0] — 2026-10-25
+
+### Ajouté
+- Mode veille : quand l'écran passe en « toujours allumé » (poignet baissé, paume sur l'écran), la carte QR reste affichée pour pouvoir être scannée ; les autres écrans laissent place à une heure sobre, presque entièrement noire.
+- Le projet Portfolio Watch (cette app) dans la liste : 8 projets, comme sur le site.
+- Tests unitaires de la carte de visite (contenu, échappement, taille maximale du QR, relecture du QR dans les deux langues), lancés par la CI.
+
+### Modifié
+- Carte de visite allégée (sans paramètres TYPE= superflus), sans « www. » pour LinkedIn : 360 octets au lieu de 401, QR de 65 modules au lieu de 69, donc plus facile à scanner.
+- Actions GitHub à jour (checkout v7, setup-java v6, setup-gradle v6, upload-artifact v7, action-gh-release v3).
+
 ## [0.3.2] — 2026-10-25
 
 ### Corrigé
@@ -56,6 +67,7 @@ Première version de l'app Wear OS.
 - L'heure en haut d'écran s'efface au défilement au lieu de chevaucher le contenu.
 - Le message « Ouvert sur votre téléphone » n'apparaît plus quand aucun téléphone n'est connecté.
 
+[0.4.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.4.0
 [0.3.2]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.3.2
 [0.3.1]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.3.1
 [0.3.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.3.0

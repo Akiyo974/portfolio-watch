@@ -19,6 +19,7 @@
     <string name="project_status_completed">Terminé</string>
     <string name="project_status_archived">Archivé</string>
     <string name="project_akiworkspace_summary">Workspace SaaS pour notes, idées, tâches et projets, avec partage granulaire.</string>
+    <string name="project_portfolio_watch_summary">Cette app : mon portfolio repensé pour un écran rond, en Kotlin et Jetpack Compose, avec une tuile et une carte de visite en QR code.</string>
     <string name="project_ctreq_summary">Fusion de deux sites WordPress en une plateforme headless Next.js, cache triple et SEO avancé.</string>
     <string name="project_ctreq_archive_summary">Archive des projets institutionnels et des articles RIRE, en React headless.</string>
     <string name="project_innovations_fp_summary">Vitrine des innovations numériques de plus de 40 enseignants en formation professionnelle.</string>

@@ -32,7 +32,7 @@ It carries over the website's identity — monochrome, editorial, condensed type
   <tr>
     <td align="center"><img src="docs/screens/01-home.png" width="160" alt="Home"><br><sub><b>Home</b><br>Live time, projects, km</sub></td>
     <td align="center"><img src="docs/screens/02-menu.png" width="160" alt="Menu"><br><sub><b>Menu</b><br>FR / EN switch, numbered entries</sub></td>
-    <td align="center"><img src="docs/screens/03-projects.png" width="160" alt="Projects"><br><sub><b>Projects</b><br>The 7 portfolio projects</sub></td>
+    <td align="center"><img src="docs/screens/03-projects.png" width="160" alt="Projects"><br><sub><b>Projects</b><br>The 8 portfolio projects</sub></td>
     <td align="center"><img src="docs/screens/04-case-study.png" width="160" alt="Case study"><br><sub><b>Case study</b><br>Summary, opens on the phone</sub></td>
     <td align="center"><img src="docs/screens/05-journey.png" width="160" alt="Journey"><br><sub><b>Journey</b><br>Réunion Island → Saguenay</sub></td>
   </tr>
@@ -50,10 +50,10 @@ It carries over the website's identity — monochrome, editorial, condensed type
 ## Features
 
 - **Watch-face home** — live time and date, minute ticks, name written along the edge, availability and two complications. One tap opens the menu.
-- **Projects** — the seven portfolio projects with year and status; each case study **opens in full on the paired phone**.
+- **Projects** — the eight portfolio projects (including this app) with year and status; each case study **opens in full on the paired phone**.
 - **Journey** — 14,420 km from Réunion Island to Saguenay, drawn as a flight path, followed by recent roles.
 - **Contact** — email, call, LinkedIn and GitHub in one tap. Calls go out from the watch when it can, otherwise from the phone.
-- **Business card QR code** — name, title, company, phone, email, city, website, LinkedIn and GitHub as a vCard; scanning it with a phone camera offers to add the contact. Full brightness and screen kept on while it is shown.
+- **Business card QR code** — name, title, company, phone, email, city, website, LinkedIn and GitHub as a vCard; scanning it with a phone camera offers to add the contact. Full brightness and screen kept on while it is shown, and it stays on screen in always-on mode so it can still be scanned with the wrist lowered.
 - **Contact card tile** — swipe from the watch face to see availability and jump straight to the QR code, a call or an email.
 - **Star game** — the website's hidden easter egg: catch as many stars as you can in 20 seconds, with haptics on every hit and the best score kept on the watch.
 - **English and French** — follows the watch language by default; a FR / EN switch at the top of the menu overrides it and is remembered (the tile follows too).
@@ -71,7 +71,7 @@ It carries over the website's identity — monochrome, editorial, condensed type
 ```bash
 adb pair <IP>:<PAIRING_PORT>
 adb connect <IP>:<PORT>
-adb install -r portfolio-watch-v0.3.2.apk
+adb install -r portfolio-watch-v0.4.0.apk
 ```
 
 `-r` updates the installed app and keeps its data. Since v0.2.0, releases are signed with the same key, so updates install on top of each other. To move from v0.1.0 (or a debug APK) to a release, uninstall the old version once (`adb uninstall com.christendijoux.watch`).
@@ -99,6 +99,7 @@ git clone https://github.com/Akiyo974/portfolio-watch.git
 cd portfolio-watch
 ./gradlew assembleDebug      # APK in app/build/outputs/apk/debug/
 ./gradlew installDebug       # installs on the connected watch or emulator
+./gradlew testDebugUnitTest  # unit tests (vCard and QR round trip)
 ./gradlew lintDebug          # Android static analysis
 ```
 
@@ -161,7 +162,8 @@ portfolio-watch/
 │   │       ├── components/           # Labels, buttons, icons
 │   │       └── screens/              # Home, Menu, Projects, Project, Journey, Contact, QR, Game
 │   └── res/                          # Fonts, icons, theme, EN (values) and FR (values-fr) strings
-├── .github/workflows/android.yml     # Build, lint and APK on every push
+├── app/src/test/                     # Unit tests (business card, QR code)
+├── .github/workflows/android.yml     # Build, tests, lint and APK on every push
 ├── .github/workflows/release.yml     # Signed APK and release on every v* tag
 ├── docs/
 │   ├── screens/                      # App screenshots
@@ -188,7 +190,8 @@ portfolio-watch/
 - [x] Signed releases published automatically
 - [x] Wear OS tile (availability, QR card, call, email)
 - [x] Tested on a real Galaxy Watch
-- [ ] QR code kept visible in always-on mode
+- [x] QR code kept visible in always-on mode
+- [x] Unit tests for the business card, run by CI
 - [ ] Projects loaded from the website instead of hard-coded
 - [ ] Installable watch face (Watch Face Format)
 - [ ] Google Play Store release

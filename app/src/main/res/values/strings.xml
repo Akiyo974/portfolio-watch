@@ -23,6 +23,7 @@
     <string name="project_status_completed">Completed</string>
     <string name="project_status_archived">Archived</string>
     <string name="project_akiworkspace_summary">SaaS workspace for notes, ideas, tasks and projects, with fine-grained sharing.</string>
+    <string name="project_portfolio_watch_summary">This very app: my portfolio redesigned for a round screen, in Kotlin and Jetpack Compose, with a tile and a QR business card.</string>
     <string name="project_ctreq_summary">Two WordPress sites merged into one headless Next.js platform, with triple caching and advanced SEO.</string>
     <string name="project_ctreq_archive_summary">Archive of institutional projects and RIRE articles, in headless React.</string>
     <string name="project_innovations_fp_summary">Showcase of digital innovations by more than 40 vocational training teachers.</string>

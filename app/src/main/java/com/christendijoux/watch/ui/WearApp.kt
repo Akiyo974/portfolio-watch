@@ -1,6 +1,7 @@
 package com.christendijoux.watch.ui
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -12,6 +13,7 @@ import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import com.christendijoux.watch.data.Portfolio
+import com.christendijoux.watch.ui.screens.AmbientScreen
 import com.christendijoux.watch.ui.screens.ContactScreen
 import com.christendijoux.watch.ui.screens.HomeScreen
 import com.christendijoux.watch.ui.screens.JourneyScreen
@@ -48,11 +50,14 @@ object Shortcuts {
 /**
  * Racine de l'app : chaque écran se ferme en glissant vers la droite ou avec le bouton retour.
  * [shortcut] ouvre directement un écran ou une action de contact ; [onShortcutHandled] le consomme.
+ * En mode veille ([ambient]), le QR reste affiché tel quel pour pouvoir être scanné ;
+ * les autres écrans laissent place à une heure sobre, presque entièrement noire.
  */
 @Composable
-fun WearApp(shortcut: String? = null, onShortcutHandled: () -> Unit = {}) {
+fun WearApp(shortcut: String? = null, onShortcutHandled: () -> Unit = {}, ambient: Boolean = false) {
     PortfolioTheme {
         val nav = rememberSwipeDismissableNavController()
+        val route = nav.currentBackStackEntryFlow.collectAsState(initial = null).value?.destination?.route
         val context = LocalContext.current
         val currentOnShortcutHandled by rememberUpdatedState(onShortcutHandled)
         // Pendant une partie, un glissement vers la droite ne doit pas fermer le jeu
@@ -79,6 +84,8 @@ fun WearApp(shortcut: String? = null, onShortcutHandled: () -> Unit = {}) {
             composable(Routes.QR) { QrScreen() }
             composable(Routes.GAME) { StarGameScreen(onRunningChange = { gameRunning = it }) }
         }
+
+        if (ambient && route != Routes.QR) AmbientScreen()
 
         // Depuis la tuile : on repart de l'accueil puis Contact, pour que le retour reste naturel
         LaunchedEffect(shortcut) {
