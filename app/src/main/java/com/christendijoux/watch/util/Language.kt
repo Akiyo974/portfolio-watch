@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
 import android.os.LocaleList
+import androidx.wear.tiles.TileService
+import com.christendijoux.watch.tile.ContactTileService
 import java.util.Locale
 
 /**
@@ -28,7 +30,11 @@ object AppLanguage {
     fun set(activity: Activity, language: String) {
         val changed = language != current(activity)
         prefs(activity).edit().putString(KEY, language).apply()
-        if (changed) activity.recreate()
+        if (changed) {
+            // La tuile affiche aussi des textes : on demande au système de la redessiner
+            TileService.getUpdater(activity).requestUpdate(ContactTileService::class.java)
+            activity.recreate()
+        }
     }
 
     /**

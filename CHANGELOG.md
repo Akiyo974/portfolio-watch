@@ -2,6 +2,11 @@
 
 Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions selon [SemVer](https://semver.org/lang/fr/).
 
+## [Non publié]
+
+### Ajouté
+- Tuile Wear OS « Carte de contact » : nom, disponibilité et trois raccourcis (carte QR, appel, e-mail) en un glissement depuis le cadran, plus un accès à l'app. Elle suit la langue choisie dans l'app.
+
 ## [0.2.1] — 2026-10-25
 
 ### Ajouté
