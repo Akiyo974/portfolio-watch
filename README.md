@@ -28,45 +28,77 @@ It carries over the website's identity — monochrome, editorial, condensed type
 
 ## Preview
 
+The project has three parts that work together on the watch: a **watch face**, a **tile** and the **app**. All screenshots come from a real Samsung Galaxy Watch (Wear OS 6, 480 px); the original design mockups are in [docs/design](docs/design).
+
+### 1. Watch face
+
+<p align="center"><img src="docs/screens/11-watch-face.png" width="260" alt="Christen Dijoux watch face"></p>
+
+A watch face in the portfolio's style, installed separately from the app (`portfolio-watch-face-*.apk`) and chosen like any other watch face. From the edge inward:
+
+- **Ring** — fills up around the edge as you walk, toward your daily step goal.
+- **CHRISTEN DIJOUX** — written along the top edge.
+- **Temperature · UV index** — from the Samsung Weather app; the line disappears when no weather data is available.
+- **Time and date** — the time in the site's condensed typeface, the date in the watch language.
+- **Steps / goal** — today's steps and the daily goal.
+- **City** — along the bottom edge: where the watch is right now, provided by the app from its approximate location.
+
+In always-on mode, only the time, date and city remain, dimmed.
+
+### 2. Tile
+
 <table>
   <tr>
-    <td align="center"><img src="docs/screens/01-home.png" width="160" alt="Home"><br><sub><b>Home</b><br>Live time, projects, km</sub></td>
-    <td align="center"><img src="docs/screens/02-menu.png" width="160" alt="Menu"><br><sub><b>Menu</b><br>FR / EN switch, numbered entries</sub></td>
-    <td align="center"><img src="docs/screens/03-projects.png" width="160" alt="Projects"><br><sub><b>Projects</b><br>The 8 portfolio projects</sub></td>
-    <td align="center"><img src="docs/screens/04-case-study.png" width="160" alt="Case study"><br><sub><b>Case study</b><br>Summary, opens on the phone</sub></td>
-    <td align="center"><img src="docs/screens/05-journey.png" width="160" alt="Journey"><br><sub><b>Journey</b><br>Réunion Island → Saguenay</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/screens/06-contact.png" width="160" alt="Contact"><br><sub><b>Contact</b><br>Email, call, LinkedIn, GitHub</sub></td>
-    <td align="center"><img src="docs/screens/07-qr.png" width="160" alt="Business card QR code"><br><sub><b>My card</b><br>vCard QR code to scan</sub></td>
-    <td align="center"><img src="docs/screens/08-game.png" width="160" alt="Star game"><br><sub><b>Star game</b><br>Last score and best</sub></td>
-    <td align="center"><img src="docs/screens/09-playing.png" width="160" alt="Game in progress"><br><sub><b>Playing</b><br>20 s, time ring</sub></td>
-    <td align="center"><img src="docs/screens/10-tile.png" width="160" alt="Contact card tile"><br><sub><b>Tile</b><br>QR, call, email from the watch face</sub></td>
+    <td align="center" valign="top" width="33%"><img src="docs/screens/10-tile.png" width="190" alt="Contact card tile"><br><b>Contact card</b><br><sub>Swipe left from the watch face. Shows availability and three buttons: <b>QR</b> opens the business card, <b>call</b> and <b>email</b> start right away. <b>Portfolio</b> opens the app.</sub></td>
   </tr>
 </table>
 
-### Watch face
+### 3. The app
 
-<p align="center"><img src="docs/screens/11-watch-face.png" width="240" alt="Christen Dijoux watch face"></p>
+**Getting around**
 
-<p align="center"><sub>A watch face in the portfolio's style: step progress ring around the edge, name, temperature and UV index, time, date, steps and the current city.</sub></p>
+<table>
+  <tr>
+    <td align="center" valign="top" width="33%"><img src="docs/screens/01-home.png" width="190" alt="Home screen"><br><b>Home screen</b><br><sub>Opens when you launch the app: time, date, availability, number of projects and kilometres travelled. Tap anywhere to open the menu.</sub></td>
+    <td align="center" valign="top" width="33%"><img src="docs/screens/02-menu.png" width="190" alt="Menu"><br><b>Menu</b><br><sub>The FR / EN switch at the top, then the four sections: Projects, Journey, Contact and Stars. Swipe right to go back, anywhere in the app.</sub></td>
+  </tr>
+</table>
 
-<sub>Screenshots of the real app on a Samsung Galaxy Watch (Wear OS 6, 480 px). The original design mockups are in <a href="docs/design">docs/design</a>.</sub>
+**The portfolio**
 
-## Features
+<table>
+  <tr>
+    <td align="center" valign="top" width="33%"><img src="docs/screens/03-projects.png" width="190" alt="Projects list"><br><b>Projects</b><br><sub>The eight portfolio projects with their number, year and status. Tap one to open it.</sub></td>
+    <td align="center" valign="top" width="33%"><img src="docs/screens/04-case-study.png" width="190" alt="Case study"><br><b>Case study</b><br><sub>A short summary of the project and its technologies. <b>Open on phone</b> shows the full case study on the paired phone.</sub></td>
+    <td align="center" valign="top" width="33%"><img src="docs/screens/05-journey.png" width="190" alt="Journey"><br><b>Journey</b><br><sub>14,420 km from Réunion Island to Saguenay, drawn as a flight path, followed by recent roles.</sub></td>
+  </tr>
+</table>
 
-- **Watch-face home** — live time and date, minute ticks, name written along the edge, availability and two complications. One tap opens the menu.
-- **Projects** — the eight portfolio projects (including this app) with year and status; each case study **opens in full on the paired phone**.
-- **Journey** — 14,420 km from Réunion Island to Saguenay, drawn as a flight path, followed by recent roles.
-- **Contact** — email, call, LinkedIn and GitHub in one tap. Calls go out from the watch when it can, otherwise from the phone.
-- **Business card QR code** — name, title, company, phone, email, city, website, LinkedIn and GitHub as a vCard; scanning it with a phone camera offers to add the contact. Full brightness and screen kept on while it is shown, and it stays on screen in always-on mode so it can still be scanned with the wrist lowered.
-- **Contact card tile** — swipe from the watch face to see availability and jump straight to the QR code, a call or an email.
-- **Watch face** — an installable watch face in the portfolio's style (Watch Face Format): a ring that fills up toward the daily step goal, name along the top edge, temperature and UV index (from Samsung Weather), time in the site's typeface, localized date, steps, and the current city along the bottom edge. The always-on mode keeps only the time, date and city, dimmed.
-- **"City" complication** — the city the watch is in, from its approximate location (permission asked once when the app opens).
-- **"My card" complication** — the app provides a complication that opens the QR business card in one tap, on this watch face or any other.
-- **Star game** — the website's hidden easter egg: catch as many stars as you can in 20 seconds, with haptics on every hit and the best score kept on the watch.
-- **English and French** — follows the watch language by default; a FR / EN switch at the top of the menu overrides it and is remembered (the tile follows too).
+**Getting in touch**
+
+<table>
+  <tr>
+    <td align="center" valign="top" width="33%"><img src="docs/screens/06-contact.png" width="190" alt="Contact"><br><b>Contact</b><br><sub>Email, call, LinkedIn and GitHub in one tap; calls go out from the watch when it can, otherwise from the phone. <b>My card</b> at the bottom opens the QR code.</sub></td>
+    <td align="center" valign="top" width="33%"><img src="docs/screens/07-qr.png" width="190" alt="Business card QR code"><br><b>My card</b><br><sub>A vCard business card as a QR code: point a phone camera at it to add the contact. Full brightness, and it stays on screen when the wrist is lowered. Also one tap away from the tile or the watch face.</sub></td>
+  </tr>
+</table>
+
+**The easter egg**
+
+<table>
+  <tr>
+    <td align="center" valign="top" width="33%"><img src="docs/screens/08-game.png" width="190" alt="Star game"><br><b>Stars</b><br><sub>The website's hidden game: last score, best score and the <b>Play</b> button.</sub></td>
+    <td align="center" valign="top" width="33%"><img src="docs/screens/09-playing.png" width="190" alt="Game in progress"><br><b>Playing</b><br><sub>Catch as many stars as you can in 20 seconds; the ring around the edge counts down, and every hit vibrates.</sub></td>
+  </tr>
+</table>
+
+## Highlights
+
+- **English and French** — the app follows the watch language; the FR / EN switch in the menu overrides it and is remembered (the tile and the complications follow too).
+- **Complications for any watch face** — *My card* (opens the QR code) and *City* (where the watch is), usable on Samsung's watch faces as well.
+- **Always-on aware** — the QR code stays scannable with the wrist lowered; the other screens switch to a quiet, nearly black clock.
 - **Standalone** — no companion app needed on the phone.
+- **Signed releases** — every `v*` tag publishes the app and the watch face, signed with the same key, so updates install on top without losing data.
 
 ## Install
 
