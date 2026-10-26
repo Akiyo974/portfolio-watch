@@ -66,7 +66,7 @@ Elle reprend l'identité du site — monochrome, éditoriale, typographie conden
 ```bash
 adb pair <IP>:<PORT_D_APPAIRAGE>
 adb connect <IP>:<PORT>
-adb install -r portfolio-watch-v0.2.1.apk
+adb install -r portfolio-watch-v0.3.0.apk
 ```
 
 `-r` met à jour l'app déjà installée en gardant ses données. Depuis la v0.2.0, les releases sont signées avec la même clé : les mises à jour s'installent par-dessus. Pour passer de la v0.1.0 (ou d'un APK de debug) à une release, désinstallez une fois l'ancienne version (`adb uninstall com.christendijoux.watch`).

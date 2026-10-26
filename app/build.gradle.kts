@@ -13,8 +13,8 @@ android {
         // Wear OS 3+ : Galaxy Watch 4 et modèles plus récents
         minSdk = 30
         targetSdk = 35
-        versionCode = 3
-        versionName = "0.2.1"
+        versionCode = 4
+        versionName = "0.3.0"
     }
 
     // Clé de signature fixe, fournie par la CI (secrets GitHub) ou en local par variables d'environnement.
