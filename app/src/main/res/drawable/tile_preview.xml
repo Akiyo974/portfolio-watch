@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Aperçu de la tuile dans le sélecteur de tuiles : écran rond, bouton QR plein et deux boutons d'action. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="192dp"
+    android:height="192dp"
+    android:viewportWidth="192"
+    android:viewportHeight="192">
+    <!-- Écran -->
+    <path
+        android:fillColor="#FF050505"
+        android:pathData="M96 0a96 96 0 1 0 0 192a96 96 0 1 0 0-192z" />
+    <!-- Nom et disponibilité -->
+    <path
+        android:fillColor="#FFF2F2EE"
+        android:pathData="M66 38h60a3 3 0 0 1 0 6H66a3 3 0 0 1 0-6z" />
+    <path
+        android:fillColor="#A8F2F2EE"
+        android:pathData="M74 52h44a2 2 0 0 1 0 4H74a2 2 0 0 1 0-4z" />
+    <!-- Bouton QR (plein) -->
+    <path
+        android:fillColor="#FFF2F2EE"
+        android:pathData="M54 72a20 20 0 1 0 0 40a20 20 0 1 0 0-40z" />
+    <path
+        android:fillColor="#FF050505"
+        android:pathData="M45 83h7v7h-7zM56 83h7v7h-7zM45 94h7v7h-7zM56 96h3v3h-3zM60 98h3v3h-3z" />
+    <!-- Boutons appel et e-mail -->
+    <path
+        android:fillColor="#FF161616"
+        android:pathData="M96 72a20 20 0 1 0 0 40a20 20 0 1 0 0-40zM138 72a20 20 0 1 0 0 40a20 20 0 1 0 0-40z" />
+    <path
+        android:fillColor="#FFF2F2EE"
+        android:pathData="M90 86a2 2 0 0 1 4 0v1a8 8 0 0 0 5 5h1a2 2 0 0 1 0 4h-1a12 12 0 0 1-9-9zM130 86h16v12h-16z" />
+    <path
+        android:pathData="M130 87l8 5.5 8-5.5"
+        android:strokeColor="#FF161616"
+        android:strokeWidth="1.5" />
+    <!-- Bouton « ouvrir » -->
+    <path
+        android:fillColor="#FF161616"
+        android:pathData="M76 132h40a10 10 0 0 1 0 20H76a10 10 0 0 1 0-20z" />
+</vector>

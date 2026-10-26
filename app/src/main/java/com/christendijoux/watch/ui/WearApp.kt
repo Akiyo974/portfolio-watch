@@ -1,13 +1,17 @@
 package com.christendijoux.watch.ui
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
+import com.christendijoux.watch.data.Portfolio
 import com.christendijoux.watch.ui.screens.ContactScreen
 import com.christendijoux.watch.ui.screens.HomeScreen
 import com.christendijoux.watch.ui.screens.JourneyScreen
@@ -17,6 +21,8 @@ import com.christendijoux.watch.ui.screens.ProjectsScreen
 import com.christendijoux.watch.ui.screens.QrScreen
 import com.christendijoux.watch.ui.screens.StarGameScreen
 import com.christendijoux.watch.ui.theme.PortfolioTheme
+import com.christendijoux.watch.util.call
+import com.christendijoux.watch.util.openOnPhone
 
 object Routes {
     const val HOME = "home"
@@ -31,11 +37,24 @@ object Routes {
     fun project(id: String) = "project/$id"
 }
 
-/** Racine de l'app : chaque écran se ferme en glissant vers la droite ou avec le bouton retour. */
+/** Raccourcis reçus de la tuile, dans l'extra [EXTRA] de l'intent qui ouvre l'app. */
+object Shortcuts {
+    const val EXTRA = "shortcut"
+    const val QR = "qr"
+    const val CALL = "call"
+    const val EMAIL = "email"
+}
+
+/**
+ * Racine de l'app : chaque écran se ferme en glissant vers la droite ou avec le bouton retour.
+ * [shortcut] ouvre directement un écran ou une action de contact ; [onShortcutHandled] le consomme.
+ */
 @Composable
-fun WearApp() {
+fun WearApp(shortcut: String? = null, onShortcutHandled: () -> Unit = {}) {
     PortfolioTheme {
         val nav = rememberSwipeDismissableNavController()
+        val context = LocalContext.current
+        val currentOnShortcutHandled by rememberUpdatedState(onShortcutHandled)
         // Pendant une partie, un glissement vers la droite ne doit pas fermer le jeu
         var gameRunning by remember { mutableStateOf(false) }
         SwipeDismissableNavHost(
@@ -59,6 +78,18 @@ fun WearApp() {
             composable(Routes.CONTACT) { ContactScreen(onShowQr = { nav.navigate(Routes.QR) }) }
             composable(Routes.QR) { QrScreen() }
             composable(Routes.GAME) { StarGameScreen(onRunningChange = { gameRunning = it }) }
+        }
+
+        // Depuis la tuile : on repart de l'accueil puis Contact, pour que le retour reste naturel
+        LaunchedEffect(shortcut) {
+            if (shortcut == null) return@LaunchedEffect
+            nav.navigate(Routes.CONTACT) { popUpTo(Routes.HOME) }
+            when (shortcut) {
+                Shortcuts.QR -> nav.navigate(Routes.QR)
+                Shortcuts.CALL -> context.call(Portfolio.PHONE)
+                Shortcuts.EMAIL -> context.openOnPhone("mailto:${Portfolio.EMAIL}")
+            }
+            currentOnShortcutHandled()
         }
     }
 }

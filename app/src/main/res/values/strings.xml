@@ -43,6 +43,10 @@
     <string name="contact_availability">Available — Synaptia Web</string>
     <string name="contact_card">My card</string>
 
+    <!-- Tuile -->
+    <string name="tile_label">Contact card</string>
+    <string name="tile_open_app">Portfolio</string>
+
     <!-- Carte de visite (QR code) -->
     <string name="card_job_title">Digital Innovation Specialist · Full-Stack &amp; AI Developer</string>
     <string name="qr_description">QR code with my contact details: scan it with a phone camera to add me</string>

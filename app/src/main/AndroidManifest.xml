@@ -22,6 +22,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:launchMode="singleTask"
             android:taskAffinity=""
             android:theme="@style/Theme.Portfolio">
             <intent-filter>
@@ -34,6 +35,21 @@
         <activity
             android:name="androidx.wear.activity.ConfirmationActivity"
             android:exported="false" />
+
+        <!-- Tuile « Christen » : disponibilité, carte QR, appel et e-mail depuis le cadran -->
+        <service
+            android:name=".tile.ContactTileService"
+            android:exported="true"
+            android:label="@string/tile_label"
+            android:permission="com.google.android.wearable.permission.BIND_TILE_PROVIDER">
+            <intent-filter>
+                <action android:name="androidx.wear.tiles.action.BIND_TILE_PROVIDER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="androidx.wear.tiles.PREVIEW"
+                android:resource="@drawable/tile_preview" />
+        </service>
     </application>
 
 </manifest>

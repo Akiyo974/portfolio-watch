@@ -69,6 +69,11 @@ dependencies {
     implementation(libs.wear)
     implementation(libs.zxing.core)
 
+    implementation(libs.wear.tiles)
+    implementation(libs.wear.protolayout)
+    implementation(libs.wear.protolayout.material)
+    implementation(libs.androidx.concurrent.futures)
+
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.wear.compose.ui.tooling)
 }

@@ -130,6 +130,7 @@ Pour signer en local, définir `SIGNING_STORE_FILE`, `SIGNING_STORE_PASSWORD`, `
 | Listes | `ScalingLazyColumn`, défilement à la lunette, `PositionIndicator` courbe |
 | Ouverture sur téléphone | `RemoteActivityHelper` (`androidx.wear:wear-remote-interactions`) |
 | Carte de visite | QR code vCard généré sur la montre ([ZXing](https://github.com/zxing/zxing)) |
+| Tuile | Jetpack Tiles + ProtoLayout Material (`androidx.wear.tiles`) |
 | Polices | Big Shoulders Display, Geist, Geist Mono — fichiers variables embarqués |
 | Build | Gradle 8.11 · AGP 8.7 · JDK 17 · GitHub Actions |
 | Cible | Wear OS 3+ (API 30 à 35), Galaxy Watch 4 et modèles plus récents |
@@ -145,6 +146,7 @@ portfolio-watch/
 │   │   ├── data/ContactCard.kt       # Carte de visite vCard et QR code
 │   │   ├── util/Phone.kt             # Ouverture sur le téléphone, appel
 │   │   ├── util/Clock.kt             # Heure mise à jour à chaque minute
+│   │   ├── tile/ContactTileService.kt  # Tuile : dispo, QR, appel, e-mail
 │   │   └── ui/
 │   │       ├── WearApp.kt            # Navigation entre les écrans
 │   │       ├── theme/Theme.kt        # Couleurs, polices, styles de texte
@@ -179,7 +181,7 @@ portfolio-watch/
 - [x] Releases signées publiées automatiquement
 - [ ] Test sur une vraie Galaxy Watch (lunette tournante, téléphone associé)
 - [ ] Cadran installable (Watch Face Format)
-- [ ] Tuile Wear OS « Disponibilité »
+- [x] Tuile Wear OS (disponibilité, carte QR, appel, e-mail)
 - [ ] Publication sur le Google Play Store
 
 Les évolutions sont détaillées dans le [CHANGELOG](CHANGELOG.md).
