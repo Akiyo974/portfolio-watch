@@ -45,6 +45,12 @@ It carries over the website's identity — monochrome, editorial, condensed type
   </tr>
 </table>
 
+### Watch face
+
+<p align="center"><img src="docs/screens/11-watch-face.png" width="240" alt="Christen Dijoux watch face"></p>
+
+<p align="center"><sub>The home screen as a real watch face: minute ticks, name along the edge, time, date and two complications (steps and the QR business card by default).</sub></p>
+
 <sub>Screenshots of the real app on a Samsung Galaxy Watch (Wear OS 6, 480 px). The original design mockups are in <a href="docs/design">docs/design</a>.</sub>
 
 ## Features
@@ -55,6 +61,8 @@ It carries over the website's identity — monochrome, editorial, condensed type
 - **Contact** — email, call, LinkedIn and GitHub in one tap. Calls go out from the watch when it can, otherwise from the phone.
 - **Business card QR code** — name, title, company, phone, email, city, website, LinkedIn and GitHub as a vCard; scanning it with a phone camera offers to add the contact. Full brightness and screen kept on while it is shown, and it stays on screen in always-on mode so it can still be scanned with the wrist lowered.
 - **Contact card tile** — swipe from the watch face to see availability and jump straight to the QR code, a call or an email.
+- **Watch face** — the home screen as an installable watch face (Watch Face Format): minute ticks, name along the edge, time in the site's typeface, localized date, and two customizable complications. A dimmed always-on mode hides ticks and complications.
+- **"My card" complication** — the app provides a complication that opens the QR business card in one tap, on this watch face or any other.
 - **Star game** — the website's hidden easter egg: catch as many stars as you can in 20 seconds, with haptics on every hit and the best score kept on the watch.
 - **English and French** — follows the watch language by default; a FR / EN switch at the top of the menu overrides it and is remembered (the tile follows too).
 - **Standalone** — no companion app needed on the phone.
@@ -71,7 +79,8 @@ It carries over the website's identity — monochrome, editorial, condensed type
 ```bash
 adb pair <IP>:<PAIRING_PORT>
 adb connect <IP>:<PORT>
-adb install -r portfolio-watch-v0.4.0.apk
+adb install -r portfolio-watch-v0.5.0.apk
+adb install -r portfolio-watch-face-v0.5.0.apk
 ```
 
 `-r` updates the installed app and keeps its data. Since v0.2.0, releases are signed with the same key, so updates install on top of each other. To move from v0.1.0 (or a debug APK) to a release, uninstall the old version once (`adb uninstall com.christendijoux.watch`).
@@ -79,6 +88,8 @@ adb install -r portfolio-watch-v0.4.0.apk
 > Some Wi-Fi networks (school, office, guest) isolate devices from each other and `adb pair` fails with *protocol fault*. Connect the computer and the watch to your phone's hotspot instead.
 
 To add the tile: long-press the watch face or swipe to the end of your tiles, tap **+**, then **Contact card**.
+
+To use the watch face: long-press the current watch face, swipe to the end, tap **+**, then **Christen Dijoux**. Long-press it again to customize the two complications.
 
 ### From CI
 
@@ -141,6 +152,8 @@ To sign locally, set `SIGNING_STORE_FILE`, `SIGNING_STORE_PASSWORD`, `SIGNING_KE
 | Open on phone | `RemoteActivityHelper` (`androidx.wear:wear-remote-interactions`) |
 | Business card | vCard QR code generated on the watch ([ZXing](https://github.com/zxing/zxing)) |
 | Tile | Jetpack Tiles + ProtoLayout Material (`androidx.wear.tiles`) |
+| Watch face | Watch Face Format v1 (declarative XML, no code), checked in CI by Google's `wff-validator` |
+| Complication | `androidx.wear.watchface:watchface-complications-data-source` |
 | Fonts | Big Shoulders Display, Geist, Geist Mono — bundled variable fonts |
 | Build | Gradle 8.11 · AGP 8.7 · JDK 17 · GitHub Actions |
 | Target | Wear OS 3+ (API 30 and up), Galaxy Watch 4 and newer |
@@ -155,6 +168,7 @@ portfolio-watch/
 │   │   ├── data/Portfolio.kt         # Projects, journey, links (from the website)
 │   │   ├── data/ContactCard.kt       # vCard business card and QR code
 │   │   ├── tile/ContactTileService.kt # Tile: availability, QR, call, email
+│   │   ├── complication/             # "My card" complication for any watch face
 │   │   ├── util/                     # Open on phone, clock, app language
 │   │   └── ui/
 │   │       ├── WearApp.kt            # Navigation between screens
@@ -163,6 +177,7 @@ portfolio-watch/
 │   │       └── screens/              # Home, Menu, Projects, Project, Journey, Contact, QR, Game
 │   └── res/                          # Fonts, icons, theme, EN (values) and FR (values-fr) strings
 ├── app/src/test/                     # Unit tests (business card, QR code)
+├── watchface/src/main/res/           # Watch face: raw/watchface.xml, static fonts, preview
 ├── .github/workflows/android.yml     # Build, tests, lint and APK on every push
 ├── .github/workflows/release.yml     # Signed APK and release on every v* tag
 ├── docs/
@@ -193,7 +208,7 @@ portfolio-watch/
 - [x] QR code kept visible in always-on mode
 - [x] Unit tests for the business card, run by CI
 - [ ] Projects loaded from the website instead of hard-coded
-- [ ] Installable watch face (Watch Face Format)
+- [x] Installable watch face (Watch Face Format) and "My card" complication
 - [ ] Google Play Store release
 
 Changes are detailed in the [CHANGELOG](CHANGELOG.md) (in French).

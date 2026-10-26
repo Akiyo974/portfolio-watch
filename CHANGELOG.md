@@ -2,6 +2,13 @@
 
 Toutes les évolutions notables de l'app. Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions selon [SemVer](https://semver.org/lang/fr/).
 
+## [0.5.0] — 2026-10-25
+
+### Ajouté
+- Cadran « Christen Dijoux » au Watch Face Format (APK à part, `portfolio-watch-face`) : l'accueil de l'app en vrai cadran, avec graduations, nom le long du bord, heure dans la police du site (version fixe en graisse 300), date dans la langue de la montre et deux complications personnalisables (pas, carte QR par défaut). En mode toujours allumé, graduations et complications s'effacent.
+- Complication « Ma carte » fournie par l'app : un toucher ouvre la carte de visite en QR code, sur ce cadran ou sur n'importe quel autre.
+- CI : le cadran est vérifié par le validateur officiel de Google (`wff-validator`) ; les releases publient les deux APK, signés avec la même clé.
+
 ## [0.4.0] — 2026-10-25
 
 ### Ajouté
@@ -67,6 +74,7 @@ Première version de l'app Wear OS.
 - L'heure en haut d'écran s'efface au défilement au lieu de chevaucher le contenu.
 - Le message « Ouvert sur votre téléphone » n'apparaît plus quand aucun téléphone n'est connecté.
 
+[0.5.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.5.0
 [0.4.0]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.4.0
 [0.3.2]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.3.2
 [0.3.1]: https://github.com/Akiyo974/portfolio-watch/releases/tag/v0.3.1
