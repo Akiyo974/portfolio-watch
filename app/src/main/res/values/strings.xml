@@ -9,7 +9,7 @@
     <string name="unit_km" translatable="false">Km</string>
 
     <!-- Menu -->
-    <string name="menu_title">Menu</string>
+    <string name="menu_language">Language</string>
     <string name="menu_projects">Projects</string>
     <string name="menu_journey">Journey</string>
     <string name="menu_contact">Contact</string>
