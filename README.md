@@ -1,139 +1,148 @@
 <p align="center">
-  <img src="docs/banner.png" alt="Portfolio de Christen Dijoux — version montre (Wear OS)" width="100%">
+  <img src="docs/banner.png" alt="Christen Dijoux's portfolio — watch edition (Wear OS)" width="100%">
 </p>
 
 <p align="center">
   <a href="https://github.com/Akiyo974/portfolio-watch/actions/workflows/android.yml"><img src="https://img.shields.io/github/actions/workflow/status/Akiyo974/portfolio-watch/android.yml?branch=main&style=flat-square&labelColor=050505&color=f2f2ee&label=build" alt="Build"></a>
-  <a href="https://github.com/Akiyo974/portfolio-watch/releases/latest"><img src="https://img.shields.io/github/v/release/Akiyo974/portfolio-watch?style=flat-square&labelColor=050505&color=f2f2ee&label=version" alt="Dernière version"></a>
+  <a href="https://github.com/Akiyo974/portfolio-watch/releases/latest"><img src="https://img.shields.io/github/v/release/Akiyo974/portfolio-watch?style=flat-square&labelColor=050505&color=f2f2ee&label=version" alt="Latest release"></a>
   <img src="https://img.shields.io/badge/Wear%20OS-3%2B-f2f2ee?style=flat-square&labelColor=050505&logo=wearos&logoColor=f2f2ee" alt="Wear OS 3+">
   <img src="https://img.shields.io/badge/Kotlin-2.1-f2f2ee?style=flat-square&labelColor=050505&logo=kotlin&logoColor=f2f2ee" alt="Kotlin 2.1">
   <img src="https://img.shields.io/badge/Compose%20for%20Wear%20OS-1.4-f2f2ee?style=flat-square&labelColor=050505&logo=jetpackcompose&logoColor=f2f2ee" alt="Compose for Wear OS 1.4">
-  <img src="https://img.shields.io/github/license/Akiyo974/portfolio-watch?style=flat-square&labelColor=050505&color=f2f2ee" alt="Licence MIT">
+  <img src="https://img.shields.io/github/license/Akiyo974/portfolio-watch?style=flat-square&labelColor=050505&color=f2f2ee" alt="MIT license">
 </p>
 
 <p align="center">
   <a href="https://christendijoux.com"><b>christendijoux.com</b></a> ·
-  <a href="#aperçu">Aperçu</a> ·
-  <a href="#installer-lapp">Installer</a> ·
-  <a href="#développement">Développement</a> ·
-  <a href="#feuille-de-route">Feuille de route</a>
+  <a href="#preview">Preview</a> ·
+  <a href="#install">Install</a> ·
+  <a href="#development">Development</a> ·
+  <a href="#roadmap">Roadmap</a>
 </p>
 
 ---
 
-Mon [portfolio](https://christendijoux.com), repensé pour un écran rond d'un pouce et demi.
-Une app **Wear OS** pensée pour la **Samsung Galaxy Watch** : mes projets, mon parcours et un moyen de me joindre, au poignet, en trois touches au plus.
+My [portfolio](https://christendijoux.com), redesigned for a round screen an inch and a half wide.
+A **Wear OS** app built for the **Samsung Galaxy Watch**: my projects, my journey and a way to reach me, on the wrist, in three taps or less.
 
-Elle reprend l'identité du site — monochrome, éditoriale, typographie condensée — et l'adapte aux codes de Wear OS : heure en haut qui s'efface au défilement, listes qui suivent la courbe de l'écran, défilement à la lunette, retour en glissant vers la droite.
+It carries over the website's identity — monochrome, editorial, condensed type — and adapts it to Wear OS conventions: a clock at the top that fades as you scroll, lists that follow the curve of the screen, bezel scrolling, and swipe-right to go back.
 
-## Aperçu
+## Preview
 
 <table>
   <tr>
-    <td align="center"><img src="docs/screens/01-accueil.png" width="200" alt="Accueil"><br><sub><b>Accueil</b><br>Heure en direct, projets, km</sub></td>
-    <td align="center"><img src="docs/screens/02-menu.png" width="200" alt="Menu"><br><sub><b>Menu</b><br>Navigation numérotée</sub></td>
-    <td align="center"><img src="docs/screens/03-projets.png" width="200" alt="Liste des projets"><br><sub><b>Projets</b><br>Les 7 projets du portfolio</sub></td>
-    <td align="center"><img src="docs/screens/04-etude-de-cas.png" width="200" alt="Étude de cas"><br><sub><b>Étude de cas</b><br>Résumé, ouverture sur le téléphone</sub></td>
+    <td align="center"><img src="docs/screens/01-home.png" width="160" alt="Home"><br><sub><b>Home</b><br>Live time, projects, km</sub></td>
+    <td align="center"><img src="docs/screens/02-menu.png" width="160" alt="Menu"><br><sub><b>Menu</b><br>FR / EN switch, numbered entries</sub></td>
+    <td align="center"><img src="docs/screens/03-projects.png" width="160" alt="Projects"><br><sub><b>Projects</b><br>The 7 portfolio projects</sub></td>
+    <td align="center"><img src="docs/screens/04-case-study.png" width="160" alt="Case study"><br><sub><b>Case study</b><br>Summary, opens on the phone</sub></td>
+    <td align="center"><img src="docs/screens/05-journey.png" width="160" alt="Journey"><br><sub><b>Journey</b><br>Réunion Island → Saguenay</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/screens/05-parcours.png" width="200" alt="Parcours"><br><sub><b>Parcours</b><br>La Réunion → Saguenay</sub></td>
-    <td align="center"><img src="docs/screens/06-contact.png" width="200" alt="Contact"><br><sub><b>Contact</b><br>E-mail, appel, LinkedIn, GitHub</sub></td>
-    <td align="center"><img src="docs/screens/07-jeu.png" width="200" alt="Jeu des étoiles"><br><sub><b>Jeu des étoiles</b><br>Dernier score et record</sub></td>
-    <td align="center"><img src="docs/screens/08-partie.png" width="200" alt="Partie en cours"><br><sub><b>Partie en cours</b><br>20 s, anneau de temps</sub></td>
+    <td align="center"><img src="docs/screens/06-contact.png" width="160" alt="Contact"><br><sub><b>Contact</b><br>Email, call, LinkedIn, GitHub</sub></td>
+    <td align="center"><img src="docs/screens/07-qr.png" width="160" alt="Business card QR code"><br><sub><b>My card</b><br>vCard QR code to scan</sub></td>
+    <td align="center"><img src="docs/screens/08-game.png" width="160" alt="Star game"><br><sub><b>Star game</b><br>Last score and best</sub></td>
+    <td align="center"><img src="docs/screens/09-playing.png" width="160" alt="Game in progress"><br><sub><b>Playing</b><br>20 s, time ring</sub></td>
+    <td align="center"><img src="docs/screens/10-tile.png" width="160" alt="Contact card tile"><br><sub><b>Tile</b><br>QR, call, email from the watch face</sub></td>
   </tr>
 </table>
 
-<sub>Captures de l'app réelle dans l'émulateur Wear OS 5 (Large Round, 454 px). Les maquettes de conception d'origine sont dans <a href="docs/design">docs/design</a>.</sub>
+<sub>Screenshots of the real app on a Samsung Galaxy Watch (Wear OS 6, 480 px). The original design mockups are in <a href="docs/design">docs/design</a>.</sub>
 
-## Fonctionnalités
+## Features
 
-- **Accueil façon cadran** — heure et date en direct, graduation des minutes, nom écrit le long du bord, disponibilité et deux complications. Un toucher ouvre le menu.
-- **Projets** — les sept projets du portfolio avec année et statut ; chaque étude de cas s'**ouvre en entier sur le téléphone** associé.
-- **Parcours** — 14 420 km de La Réunion à Saguenay, tracés le long de la lunette, puis les expériences récentes.
-- **Contact** — e-mail, appel, LinkedIn et GitHub en un toucher. L'appel part de la montre si elle le permet, sinon du téléphone.
-- **Jeu des étoiles** — le clin d'œil caché du site : un maximum d'étoiles en 20 secondes, avec vibration à chaque touche et record gardé sur la montre.
-- **Autonome** — aucune app compagnon à installer sur le téléphone.
+- **Watch-face home** — live time and date, minute ticks, name written along the edge, availability and two complications. One tap opens the menu.
+- **Projects** — the seven portfolio projects with year and status; each case study **opens in full on the paired phone**.
+- **Journey** — 14,420 km from Réunion Island to Saguenay, drawn along the bezel, followed by recent roles.
+- **Contact** — email, call, LinkedIn and GitHub in one tap. Calls go out from the watch when it can, otherwise from the phone.
+- **Business card QR code** — name, title, company, phone, email, city, website, LinkedIn and GitHub as a vCard; scanning it with a phone camera offers to add the contact. Full brightness and screen kept on while it is shown.
+- **Contact card tile** — swipe from the watch face to see availability and jump straight to the QR code, a call or an email.
+- **Star game** — the website's hidden easter egg: catch as many stars as you can in 20 seconds, with haptics on every hit and the best score kept on the watch.
+- **English and French** — follows the watch language by default; a FR / EN switch at the top of the menu overrides it and is remembered (the tile follows too).
+- **Standalone** — no companion app needed on the phone.
 
-## Installer l'app
+## Install
 
-### Depuis une release
+### From a release
 
-1. Téléchargez `portfolio-watch-v*.apk` depuis la [dernière release](https://github.com/Akiyo974/portfolio-watch/releases/latest).
-2. Sur la montre : *Paramètres → À propos de la montre → Informations sur le logiciel*, touchez 5 fois **Version du logiciel** pour activer le mode développeur.
-3. *Paramètres → Options de développement* : activez **Débogage ADB** et **Débogage sans fil**, puis notez l'adresse IP et les ports affichés.
-4. Depuis l'ordinateur, sur le même réseau Wi-Fi :
+1. Download `portfolio-watch-v*.apk` from the [latest release](https://github.com/Akiyo974/portfolio-watch/releases/latest).
+2. On the watch: *Settings → About watch → Software information*, tap **Software version** 5 times to enable developer mode.
+3. *Settings → Developer options*: turn on **ADB debugging** and **Wireless debugging**, then note the IP address and ports shown.
+4. From the computer, on the same Wi-Fi network:
 
 ```bash
-adb pair <IP>:<PORT_D_APPAIRAGE>
+adb pair <IP>:<PAIRING_PORT>
 adb connect <IP>:<PORT>
 adb install -r portfolio-watch-v0.3.0.apk
 ```
 
-`-r` met à jour l'app déjà installée en gardant ses données. Depuis la v0.2.0, les releases sont signées avec la même clé : les mises à jour s'installent par-dessus. Pour passer de la v0.1.0 (ou d'un APK de debug) à une release, désinstallez une fois l'ancienne version (`adb uninstall com.christendijoux.watch`).
+`-r` updates the installed app and keeps its data. Since v0.2.0, releases are signed with the same key, so updates install on top of each other. To move from v0.1.0 (or a debug APK) to a release, uninstall the old version once (`adb uninstall com.christendijoux.watch`).
 
-### Depuis la CI
+> Some Wi-Fi networks (school, office, guest) isolate devices from each other and `adb pair` fails with *protocol fault*. Connect the computer and the watch to your phone's hotspot instead.
 
-Chaque push sur `main` compile l'app : l'APK de debug est téléchargeable dans les artefacts du [dernier build](https://github.com/Akiyo974/portfolio-watch/actions/workflows/android.yml). Il est signé avec une clé de debug qui change d'un build à l'autre : il faut désinstaller l'app avant de l'installer.
+To add the tile: long-press the watch face or swipe to the end of your tiles, tap **+**, then **Contact card**.
 
-## Développement
+### From CI
 
-### Prérequis
+Every push to `main` builds the app: the debug APK can be downloaded from the artifacts of the [latest build](https://github.com/Akiyo974/portfolio-watch/actions/workflows/android.yml). It is signed with a debug key that changes from one build to the next, so the app has to be uninstalled first.
+
+## Development
+
+### Requirements
 
 - JDK 17
-- SDK Android (plateforme 35) — via [Android Studio](https://developer.android.com/studio) ou les outils en ligne de commande
-- Une Galaxy Watch sous Wear OS 3+ **ou** l'émulateur *Wear OS Large Round*
+- Android SDK (platform 35) — via [Android Studio](https://developer.android.com/studio) or the command-line tools
+- A Galaxy Watch on Wear OS 3+ **or** the *Wear OS Large Round* emulator
 
-### Compiler et lancer
+### Build and run
 
 ```bash
 git clone https://github.com/Akiyo974/portfolio-watch.git
 cd portfolio-watch
-./gradlew assembleDebug      # APK dans app/build/outputs/apk/debug/
-./gradlew installDebug       # installe sur la montre ou l'émulateur connecté
-./gradlew lintDebug          # analyse statique Android
+./gradlew assembleDebug      # APK in app/build/outputs/apk/debug/
+./gradlew installDebug       # installs on the connected watch or emulator
+./gradlew lintDebug          # Android static analysis
 ```
 
-Sans Android Studio, indiquez l'emplacement du SDK dans un fichier `local.properties` (non versionné) :
+Without Android Studio, point to the SDK in a `local.properties` file (not versioned):
 
 ```properties
-sdk.dir=C:/Users/<vous>/Android/Sdk
+sdk.dir=C:/Users/<you>/Android/Sdk
 ```
 
-### Publier une release
+### Publish a release
 
-1. Mettre à jour `versionCode` et `versionName` dans `app/build.gradle.kts`, et la section correspondante du [CHANGELOG](CHANGELOG.md).
-2. Une fois sur `main`, pousser le tag de la version :
+1. Bump `versionCode` and `versionName` in `app/build.gradle.kts`, and date the matching section of the [CHANGELOG](CHANGELOG.md).
+2. Once it is on `main`, push the version tag:
 
 ```bash
-git tag v0.2.0
-git push origin v0.2.0
+git tag v0.3.0
+git push origin v0.3.0
 ```
 
-Le workflow [Release](.github/workflows/release.yml) vérifie que le tag correspond à `versionName`, compile l'APK signé, puis publie la release avec ses notes tirées du CHANGELOG.
+The [Release](.github/workflows/release.yml) workflow checks that the tag matches `versionName`, builds the signed APK, then publishes the release with notes taken from the CHANGELOG.
 
-La signature utilise une clé PKCS12 fixe (alias `portfolio-watch`), jamais versionnée, fournie par deux secrets du dépôt (*Settings → Secrets and variables → Actions*) :
+Signing uses a fixed PKCS12 key (alias `portfolio-watch`), never versioned, provided by two repository secrets (*Settings → Secrets and variables → Actions*):
 
-| Secret | Contenu |
+| Secret | Content |
 |---|---|
-| `SIGNING_KEYSTORE_BASE64` | Le fichier `.p12` encodé en base64 |
-| `SIGNING_PASSWORD` | Son mot de passe |
+| `SIGNING_KEYSTORE_BASE64` | The `.p12` file, base64-encoded |
+| `SIGNING_PASSWORD` | Its password |
 
-Pour signer en local, définir `SIGNING_STORE_FILE`, `SIGNING_STORE_PASSWORD`, `SIGNING_KEY_ALIAS` et `SIGNING_KEY_PASSWORD` avant `./gradlew assembleRelease`. Sans ces variables, l'APK de release est produit non signé.
+To sign locally, set `SIGNING_STORE_FILE`, `SIGNING_STORE_PASSWORD`, `SIGNING_KEY_ALIAS` and `SIGNING_KEY_PASSWORD` before `./gradlew assembleRelease`. Without them, the release APK is built unsigned.
 
-### Stack technique
+### Tech stack
 
-| Couche | Choix |
+| Layer | Choice |
 |---|---|
-| Langage | Kotlin 2.1 |
-| Interface | Jetpack Compose for Wear OS 1.4 (`compose-material`, `compose-foundation`) |
-| Navigation | `SwipeDismissableNavHost` : glisser vers la droite ou bouton retour |
-| Listes | `ScalingLazyColumn`, défilement à la lunette, `PositionIndicator` courbe |
-| Ouverture sur téléphone | `RemoteActivityHelper` (`androidx.wear:wear-remote-interactions`) |
-| Carte de visite | QR code vCard généré sur la montre ([ZXing](https://github.com/zxing/zxing)) |
-| Tuile | Jetpack Tiles + ProtoLayout Material (`androidx.wear.tiles`) |
-| Polices | Big Shoulders Display, Geist, Geist Mono — fichiers variables embarqués |
+| Language | Kotlin 2.1 |
+| UI | Jetpack Compose for Wear OS 1.4 (`compose-material`, `compose-foundation`) |
+| Navigation | `SwipeDismissableNavHost`: swipe right or back button |
+| Lists | `ScalingLazyColumn`, bezel scrolling, curved `PositionIndicator` |
+| Open on phone | `RemoteActivityHelper` (`androidx.wear:wear-remote-interactions`) |
+| Business card | vCard QR code generated on the watch ([ZXing](https://github.com/zxing/zxing)) |
+| Tile | Jetpack Tiles + ProtoLayout Material (`androidx.wear.tiles`) |
+| Fonts | Big Shoulders Display, Geist, Geist Mono — bundled variable fonts |
 | Build | Gradle 8.11 · AGP 8.7 · JDK 17 · GitHub Actions |
-| Cible | Wear OS 3+ (API 30 à 35), Galaxy Watch 4 et modèles plus récents |
+| Target | Wear OS 3+ (API 30 and up), Galaxy Watch 4 and newer |
 
 ### Structure
 
@@ -141,58 +150,58 @@ Pour signer en local, définir `SIGNING_STORE_FILE`, `SIGNING_STORE_PASSWORD`, `
 portfolio-watch/
 ├── app/src/main/
 │   ├── java/com/christendijoux/watch/
-│   │   ├── MainActivity.kt
-│   │   ├── data/Portfolio.kt         # Projets, parcours, liens (repris du site)
-│   │   ├── data/ContactCard.kt       # Carte de visite vCard et QR code
-│   │   ├── util/Phone.kt             # Ouverture sur le téléphone, appel
-│   │   ├── util/Clock.kt             # Heure mise à jour à chaque minute
-│   │   ├── tile/ContactTileService.kt  # Tuile : dispo, QR, appel, e-mail
+│   │   ├── MainActivity.kt           # Entry point, app language, tile shortcuts
+│   │   ├── data/Portfolio.kt         # Projects, journey, links (from the website)
+│   │   ├── data/ContactCard.kt       # vCard business card and QR code
+│   │   ├── tile/ContactTileService.kt # Tile: availability, QR, call, email
+│   │   ├── util/                     # Open on phone, clock, app language
 │   │   └── ui/
-│   │       ├── WearApp.kt            # Navigation entre les écrans
-│   │       ├── theme/Theme.kt        # Couleurs, polices, styles de texte
-│   │       ├── components/           # Étiquettes, boutons, icônes
-│   │       └── screens/              # Accueil, Menu, Projets, Projet, Parcours, Contact, QR, Jeu
-│   └── res/                          # Polices, icône, thème, textes EN (values) et FR (values-fr)
-├── .github/workflows/android.yml     # Build, lint et APK à chaque push
-├── .github/workflows/release.yml     # APK signé et release à chaque tag v*
+│   │       ├── WearApp.kt            # Navigation between screens
+│   │       ├── theme/Theme.kt        # Colors, fonts, text styles
+│   │       ├── components/           # Labels, buttons, icons
+│   │       └── screens/              # Home, Menu, Projects, Project, Journey, Contact, QR, Game
+│   └── res/                          # Fonts, icons, theme, EN (values) and FR (values-fr) strings
+├── .github/workflows/android.yml     # Build, lint and APK on every push
+├── .github/workflows/release.yml     # Signed APK and release on every v* tag
 ├── docs/
-│   ├── screens/                      # Captures de l'app
-│   └── design/                       # Maquettes de conception
-└── third_party/fonts/                # Licences OFL des polices
+│   ├── screens/                      # App screenshots
+│   └── design/                       # Design mockups
+└── third_party/fonts/                # Font licenses (OFL)
 ```
 
 ### Design
 
 | | |
 |---|---|
-| **Couleurs** | Encre `#050505` · Papier `#F2F2EE` · Lignes à 16–28 % d'opacité |
-| **Typographies** | [Big Shoulders Display](https://fonts.google.com/specimen/Big+Shoulders+Display) (titres) · [Geist](https://vercel.com/font) (texte) · Geist Mono (étiquettes) |
-| **Principes** | Contenu dans la zone sûre centrale, cibles tactiles ≥ 48 dp, texte qui suit la courbe de l'écran |
+| **Colors** | Ink `#050505` · Paper `#F2F2EE` · Lines at 16–28 % opacity |
+| **Typefaces** | [Big Shoulders Display](https://fonts.google.com/specimen/Big+Shoulders+Display) (titles) · [Geist](https://vercel.com/font) (body) · Geist Mono (labels) |
+| **Principles** | Content inside the central safe zone, touch targets ≥ 48 dp, text that follows the curve of the screen |
 
-## Feuille de route
+## Roadmap
 
-- [x] Maquettes des écrans (format rond)
-- [x] App Wear OS : accueil, menu, projets, étude de cas, parcours, contact, jeu
-- [x] Ouverture des liens sur le téléphone
-- [x] Tests dans l'émulateur Wear OS 5 et captures réelles
-- [x] Intégration continue (build, lint, APK)
-- [x] Carte de visite en QR code
-- [x] Version anglaise
-- [x] Releases signées publiées automatiquement
-- [ ] Test sur une vraie Galaxy Watch (lunette tournante, téléphone associé)
-- [ ] Cadran installable (Watch Face Format)
-- [x] Tuile Wear OS (disponibilité, carte QR, appel, e-mail)
-- [ ] Publication sur le Google Play Store
+- [x] Screen mockups (round format)
+- [x] Wear OS app: home, menu, projects, case study, journey, contact, game
+- [x] Links open on the phone
+- [x] Continuous integration (build, lint, APK)
+- [x] Business card QR code
+- [x] English version and in-app FR / EN switch
+- [x] Signed releases published automatically
+- [x] Wear OS tile (availability, QR card, call, email)
+- [x] Tested on a real Galaxy Watch
+- [ ] QR code kept visible in always-on mode
+- [ ] Projects loaded from the website instead of hard-coded
+- [ ] Installable watch face (Watch Face Format)
+- [ ] Google Play Store release
 
-Les évolutions sont détaillées dans le [CHANGELOG](CHANGELOG.md).
+Changes are detailed in the [CHANGELOG](CHANGELOG.md) (in French).
 
-## Liens
+## Links
 
-- Portfolio web : [christendijoux.com](https://christendijoux.com) — code : [Akiyo974/portfolio](https://github.com/Akiyo974/portfolio)
-- LinkedIn : [christen-dijoux](https://www.linkedin.com/in/christen-dijoux)
+- Web portfolio: [christendijoux.com](https://christendijoux.com) — code: [Akiyo974/portfolio](https://github.com/Akiyo974/portfolio)
+- LinkedIn: [christen-dijoux](https://www.linkedin.com/in/christen-dijoux)
 
-## Licence
+## License
 
-Code distribué sous licence [MIT](LICENSE). © 2026 Christen Dijoux.
+Code released under the [MIT](LICENSE) license. © 2026 Christen Dijoux.
 
-Polices sous [SIL Open Font License](third_party/fonts) : Big Shoulders Display (The Big Shoulders Project Authors), Geist et Geist Mono (The Geist Project Authors). Icônes d'après [Lucide](https://lucide.dev) (ISC).
+Fonts under the [SIL Open Font License](third_party/fonts): Big Shoulders Display (The Big Shoulders Project Authors), Geist and Geist Mono (The Geist Project Authors). Icons based on [Lucide](https://lucide.dev) (ISC).
