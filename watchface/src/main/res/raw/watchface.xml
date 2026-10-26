@@ -115,7 +115,7 @@
 
         <!-- Ville actuelle le long du bord, en bas : complication fixe fournie par l'app (localisation) -->
         <ComplicationSlot slotId="0" x="0" y="0" width="450" height="450" supportedTypes="SHORT_TEXT" isCustomizable="FALSE">
-            <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY" primaryProvider="com.christendijoux.watch/com.christendijoux.watch.complication.CityComplicationService" primaryProviderType="SHORT_TEXT" />
+            <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.christendijoux.watch/com.christendijoux.watch.complication.CityComplicationService" primaryProviderType="SHORT_TEXT" />
             <BoundingBox x="125" y="372" width="200" height="50" />
             <Variant mode="AMBIENT" target="alpha" value="128" />
             <Complication type="SHORT_TEXT">
